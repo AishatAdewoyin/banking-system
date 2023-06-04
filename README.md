@@ -1,4 +1,4 @@
-# Coming Soon: My INTERNSHIP PROGRAM AT "The Sparks Foundation" 
+# Coming Soon: INTERNSHIP AT "The Sparks Foundation" 
 
 ## Dynamic Banking Website
 
