@@ -1,8 +1,8 @@
 ## Dynamic Banking Website
 
-This is a simple dynamic website that allows users to transfer money between multiple customers. The website is designed to handle up to 10 customers and record all transfer transactions in a database. There is no login page or user creation functionality included in this website.
+This is a simple dynamic website that allows users(bank sustem admins) to transfer money between multiple customers. The website is designed to handle up to 10 customers and record all transfer transactions in a database. There is no login page or user creation functionality included in this website.
 
-### Features
+### The Features
 
 Home Page: The landing page of the website.
 View all Customers: Displays a list of all the customers in the database.
@@ -28,5 +28,5 @@ Timestamp: The timestamp of the transfer.
 Making sure I populate the "Customers" table with dummy data for up to 10 customers.
 
 ### Hosting
-Using any of them 000webhost, GitHub Pages, Heroku, Netlify.
+Using any of 000webhost, GitHub Pages, Heroku, or Netlify.
 
