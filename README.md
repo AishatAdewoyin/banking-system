@@ -1,3 +1,5 @@
+# Coming Soon: My INTERNSHIP PROGRAM AT "The Sparks Foundation" 
+
 ## Dynamic Banking Website
 
 This is a simple dynamic website that allows users(bank sustem admins) to transfer money between multiple customers. The website is designed to handle up to 10 customers and record all transfer transactions in a database. There is no login page or user creation functionality included in this website.
