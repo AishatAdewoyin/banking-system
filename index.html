@@ -10,13 +10,20 @@
     <link rel="stylesheet" href="assets/CSS/style.css">
     <link rel="stylesheet" href="assets/CSS/bootstrap.min.css">
 
+    <!-- Google fonts APIs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@500&family=Roboto:wght@500&display=swap"
+        rel="stylesheet">
+
     <title>💵PBNK Banking Plc</title>
 </head>
 
 <body>
     <header>
         <!-- Navbar start -->
-        <nav class="navbar navbar-expand-lg bg-body-secondary">
+        <nav class="navbar navbar-expand-lg fixed-top bg-body-secondary">
             <div class="container">
                 <a class="navbar-brand fw-bolder text-success" href="#">💵PBNK</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -31,9 +38,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Create an Account</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#"></a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -54,13 +58,28 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <input class="form-control me-2" type="search" placeholder="Search for services"
+                            aria-label="Search">
+                        <button class="btn btn-success" type="submit">Search</button>
                     </form>
                 </div>
             </div>
         </nav>
-        <!-- Nav -->
+        <!-- Nav ends-->
+
+        <!-- headimg start -->
+        <section class="container text-center" id="herosection">
+            <div class="hero">
+                <h4 class="text-success">Hi! Welcome to PBNK</h4>
+                <h1>We are well known for giving our customers best solution <br> for their business growth</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam reprehenderit ducimus quas minima
+                    similique laudantium delectus fugiat? Pariatur, hic reprehenderit?</p>
+                <div class="mt-5">
+                    <button class="me-4"><a href="#">Create an Account</a></button>
+                    <button><a href="#">Login to your Account</a></button>
+                </div>
+            </div>
+        </section>
     </header>
     <main></main>
     <footer></footer>
