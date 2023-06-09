@@ -2,11 +2,17 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: #cafde8;
+    /* background-color: #cafde8; */
     font-family: 'Roboto', sans-serif;
 }
 
 /* NAVBAR */
+body,
+header,
+nav,
+main{
+    background-color: #cafde8 !important;
+}
 
 .navbar-nav li a:hover{
     text-decoration: underline;
@@ -29,7 +35,7 @@
 /* Hero */
 
 .hero {
-    padding: 12rem 15rem;
+    padding: 13rem 15rem;
 }
 
 .hero h1 {
@@ -67,9 +73,31 @@
 div .icon-box{
     background-color: #198754;
     height: 18rem;
+    width: 21.1rem !important;
     border-radius: 25px;
 }
 
 #services div h2{
-    margin: 3rem 0;
+    font-size: 1.8rem;
+    text-decoration: underline;
+    text-decoration-color: #000 ;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 3px;
+}
+
+.icon-box i{
+    color: #fff;
+    font-size: 50px;
+    width: 50px;
+}
+
+/* ABOUT */
+#about{
+    margin: 10rem 0;
+}
+.about .design{
+    height: 18rem;
+    background-color: #198754;
+    border-bottom-right-radius: 15rem;
+    border-top-right-radius: 15rem;
 }
