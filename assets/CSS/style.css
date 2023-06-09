@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     background-color: #cafde8;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* NAVBAR */
@@ -24,6 +24,37 @@
 
 /* Hero */
 
-.hero{
-    padding: 10rem 15rem;
+.hero {
+    padding: 12rem 15rem;
 }
+
+.hero h1 {
+    font-size: 1.5rem;
+}
+
+.hero h4 {
+    font-size: 1rem;
+}
+
+.hero p {
+    font-size: .8rem;
+    color: grey;
+}
+
+.hero button,
+.hero button a {
+    background-color: #198754;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    font-size: .8rem;
+    border-radius: 25px;
+    padding: .5rem;
+}
+
+.hero button:hover,
+.hero button a:hover {
+    background-color: #000;
+    color: #fff;
+}
+
