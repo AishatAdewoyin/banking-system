@@ -127,3 +127,31 @@ div .icon-box{
 
 /* CONTACT */
 
+.contact{
+    background-color: #198754;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.contactdiv .social,
+.contactdiv .others{
+    list-style: none;
+}
+
+.contactdiv .social li a{
+    margin: 0 .8rem;
+    color: #fff;
+    font-size: 2.5rem;
+}
+
+.contactdiv .others li a{
+    text-decoration: none;
+    margin: 0 .8rem;
+    color: #fff;
+    font-size: 1rem;
+}
+
+iframe{
+    border-radius: 20px;
+}
+
