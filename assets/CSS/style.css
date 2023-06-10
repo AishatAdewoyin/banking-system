@@ -85,10 +85,22 @@ div .icon-box{
     text-decoration-thickness: 3px;
 }
 
-.icon-box i{
+.icon-box div{
+    padding: 1rem;
+}
+
+.icon-box div i{
     color: #fff;
-    font-size: 50px;
-    width: 50px;
+    font-size: 6rem;
+    padding-bottom: 3px;
+}
+
+.icon-box div h5{
+    font-size: 1rem;
+}
+
+.icon-box div p{
+    font-size: .7rem;
 }
 
 /* ABOUT */
@@ -100,27 +112,16 @@ div .icon-box{
     background-color: #89ffc8;
     border-bottom-right-radius: 15rem;
     border-top-right-radius: 15rem;
-    position: relative;
+    padding: 2rem;
 }
 
-div .about-words {
-    background-color: #198754;
-    position: absolute;
-    top: 85rem;
-    right: 1rem;
-    width: 35rem;
-    height: 20rem;
-    border-radius: 10px;
-}
-
-.about-words div img{
+.design img{
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
 }
 
-.about-words div p{
-    color: #fff;
+.design p{
     font-size: 0.8rem;
 }
 
