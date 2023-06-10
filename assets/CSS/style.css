@@ -97,7 +97,32 @@ div .icon-box{
 }
 .about .design{
     height: 18rem;
-    background-color: #198754;
+    background-color: #89ffc8;
     border-bottom-right-radius: 15rem;
     border-top-right-radius: 15rem;
+    position: relative;
 }
+
+div .about-words {
+    background-color: #198754;
+    position: absolute;
+    top: 85rem;
+    right: 1rem;
+    width: 35rem;
+    height: 20rem;
+    border-radius: 10px;
+}
+
+.about-words div img{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+}
+
+.about-words div p{
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+/* CONTACT */
+
