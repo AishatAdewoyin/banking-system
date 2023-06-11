@@ -47,21 +47,21 @@
             <div class="container text-center services">
                 <h2>Our Services</h2>
                 <div class="row row-cols-1 row-cols-lg-3 row-cols-md-3 g-3 g-lg-5 g-md-5 my-5">
-                    <div class="col icon-box m-3">
+                    <div class="col col-sm-12 icon-box m-3">
                         <div>
                             <i class="fas fa-hand-holding-usd"></i>
                             <h5>Open a Personal Account with us</h5>
                             <p>Start building a healthy savings habit with our Personal Savings Account. It's designed to empower you to save and manage your finances effectively. With this account, you can easily make transactions, track your progress, and watch your savings grow</p>
                         </div>
                     </div>
-                    <div class="col icon-box m-3">
+                    <div class="col col-sm-12 icon-box m-3">
                         <div>
                             <i class="fas fa-dollar-sign"></i>
                             <h5>Open a Business Account with us</h5>
                             <p>Take control of your business finances and boost profitability with our secure and convenient Business Account. Manage transactions, track expenses, and maximize your earnings effortlessly. Empower your business to thrive with our tailored financial solutions.</p>
                         </div>
                     </div>
-                    <div class="col icon-box m-3">
+                    <div class="col col-sm-12 icon-box m-3">
                         <div>
                             <i class="fas fa-wallet"></i>
                             <h5>Go into Investment with us</h5>
@@ -120,7 +120,7 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write your message"></textarea>
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-danger" type="submit">Send Message</button>
+                        <button class="btn btn-danger contactbtn" type="submit">Send Message</button>
                     </div>
                     </form>
                 </div>
@@ -128,7 +128,7 @@
         </section>
     </main>
     <footer>
-        <div class="">
+        <div class="text-center">
             <p>All Rights Reserved, <span class="tbnkfoot">💵TBNK PLC</span> <sup>&#169</sup> 2024. Developed By<span class="mylink"><a href="https://github.com/Aishat452" target="_blank"> Aishat Adewoyin</a></span></p>
         </div>
     </footer>

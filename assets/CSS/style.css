@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -10,25 +10,25 @@
 body,
 header,
 nav,
-main{
+main {
     background-color: #cafde8 !important;
 }
 
-.navbar-nav li a:hover{
+.navbar-nav li a:hover {
     text-decoration: underline;
     text-decoration-color: #198754;
     text-decoration-thickness: 4px;
     text-underline-offset: 7px;
 }
 
-.navbar-nav li a:focus{
+.navbar-nav li a:focus {
     text-decoration: underline;
     text-decoration-color: #198754;
     text-decoration-thickness: 4px;
     text-underline-offset: 7px;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     background-color: #cafde8 !important;
 }
 
@@ -70,44 +70,45 @@ main{
 
 /* ICON */
 
-div .icon-box{
+div .icon-box {
     background-color: #198754;
     height: 18rem;
     width: 21.1rem !important;
     border-radius: 25px;
 }
 
-#services div h2{
+#services div h2 {
     font-size: 1.8rem;
     text-decoration: underline;
-    text-decoration-color: #000 ;
+    text-decoration-color: #000;
     text-underline-offset: 6px;
     text-decoration-thickness: 3px;
 }
 
-.icon-box div{
+.icon-box div {
     padding: 1rem;
 }
 
-.icon-box div i{
+.icon-box div i {
     color: #fff;
     font-size: 6rem;
     padding-bottom: 3px;
 }
 
-.icon-box div h5{
+.icon-box div h5 {
     font-size: 1rem;
 }
 
-.icon-box div p{
+.icon-box div p {
     font-size: .7rem;
 }
 
 /* ABOUT */
-#about{
+#about {
     margin: 10rem 0;
 }
-.about .design{
+
+.about .design {
     height: 18rem;
     background-color: #89ffc8;
     border-bottom-right-radius: 15rem;
@@ -115,54 +116,54 @@ div .icon-box{
     padding: 2rem;
 }
 
-.design img{
+.design img {
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
 }
 
-.design p{
+.design p {
     font-size: 0.8rem;
 }
 
 /* CONTACT */
 
-.contact{
+.contact {
     background-color: #198754;
     border-radius: 20px;
     color: #fff;
 }
 
 .contactdiv .social,
-.contactdiv .others{
+.contactdiv .others {
     list-style: none;
 }
 
-.contactdiv .social li a{
+.contactdiv .social li a {
     margin: 0 .8rem;
     color: #fff;
     font-size: 2.5rem;
 }
 
-textarea{
+textarea {
     resize: none !important;
     height: 10rem;
 }
 
-.contactdiv .others li a{
+.contactdiv .others li a {
     text-decoration: none;
     margin: 0 .8rem;
     color: #fff;
     font-size: 1rem;
 }
 
-iframe{
+iframe {
     border-radius: 20px;
 }
 
 /* FOOTER */
 
-footer div{
+footer div {
     background-color: #198754;
     height: 7rem;
     border-top-right-radius: 100rem;
@@ -175,22 +176,22 @@ footer div p {
     color: #fff;
 }
 
-footer{
+footer {
     margin-top: 8rem;
 }
 
-.tbnkfoot{
+.tbnkfoot {
     color: aqua;
 }
 
-.mylink a{
+.mylink a {
     color: #ff0019;
     text-decoration: none;
 }
 
 /* LOGINS PAGES */
 
-.form-login{
+.form-login {
     background-color: #198754;
     padding: 3rem;
     margin: 4rem 19rem;
@@ -198,11 +199,11 @@ footer{
     border-radius: 3rem;
 }
 
-.form-text{
+.form-text {
     color: #000 !important;
 }
 
-.form-link a{
+.form-link a {
     color: #ff0019;
 }
 
@@ -215,11 +216,171 @@ footer{
     border-radius: 3rem;
 }
 
-.reg-form-section{
+.reg-form-section {
     padding-top: 3rem;
 }
 
 input::placeholder,
-textarea::placeholder{
+textarea::placeholder {
     font-size: 12px !important;
- }
+}
+
+
+/* MEDIA QUERIES */
+
+/* `xs` returns only a ruleset and no media query
+ ... { ... } */
+
+/* `sm` applies to x-small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+
+    /* HERO */
+    .hero {
+        padding: 8rem 1rem;
+    }
+
+    .hero h4 {
+        font-size: .9rem;
+    }
+
+    .hero h1 {
+        font-size: 1.4rem;
+    }
+
+    .hero p {
+        font-size: .7rem;
+        color: grey;
+    }
+
+    .mt-5 {
+        margin-top: 2rem !important;
+    }
+
+    .hero button,
+    .hero button a {
+        background-color: #198754;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        font-size: .7rem;
+        border-radius: 25px;
+        padding: 0.5rem;
+    }
+
+    #services div h2 {
+        font-size: 1.3rem;
+        text-decoration: underline;
+        text-decoration-color: #000;
+        text-underline-offset: 5px;
+        text-decoration-thickness: 2px;
+    }
+
+    .services .my-5 {
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    div .icon-box {
+        background-color: #198754;
+        height: 13rem;
+        border-radius: 25px;
+        margin: 0 5px 8px !important;
+        flex: 0 0 auto !important;
+        width: 100% !important;
+    }
+
+    .icon-box div i {
+        color: #fff;
+        font-size: 4rem;
+        padding-bottom: 10px;
+    }
+
+
+    /* ABOUT */
+
+    #about {
+        margin: 7rem 0;
+    }
+
+    .about .design {
+        padding: 0.5rem !important;
+    }
+
+    .design h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    .design p {
+        font-size: 0.78rem;
+        padding: 0 2rem 1rem 0.2rem !important;
+    }
+
+    .design img {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        margin-left: 1rem;
+    }
+
+    /* CONTACT */
+
+    .contact h2{
+        font-size: 1.25rem;
+    }
+
+    .contactdiv h5,
+    .contactdiv h4{
+        font-size: 1rem;
+        line-height: .9rem !important;
+        margin: 0 !important;
+    }
+
+    .contactdiv .social li a {
+        font-size: 1.5rem;
+    }
+
+    .contactdiv .others li a {
+        font-size: .8rem;
+    }
+
+    iframe {
+        border-radius: 20px;
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .contactbtn{
+        margin-bottom: 3rem;
+    }
+
+    footer div p {
+        padding: 3.5rem 0 0 4.5rem;
+        color: #fff;
+        font-size: .8rem;
+    }
+
+    .form-login {
+        padding: 2rem;
+        margin: 3rem 4rem;
+        border-radius: 3rem;
+    }
+
+    .form-login h2{
+        font-size: 1.35rem !important;
+    }
+
+
+}
+
+/* `md` applies to small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {}
+
+/* `lg` applies to medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {}
+
+/* `xl` applies to large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {}
+
+/* `xxl` applies to x-large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {}
