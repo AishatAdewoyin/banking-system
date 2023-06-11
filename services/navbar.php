@@ -19,21 +19,32 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#services">Our Services</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Create an Account</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" aria-current="page" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Create an Account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="personal-reg.php">Create a Personal Account</a></li>
+                                <li><a class="dropdown-item" href="business-reg.php">Create a Business Account</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="invest-reg.php">Become an Investor</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle" aria-current="page" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Login to Your Account
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Personal Account</a></li>
-                                <li><a class="dropdown-item" href="#">Business Account</a></li>
+                                <li><a class="dropdown-item" href="personal-login.php">Personal Account</a></li>
+                                <li><a class="dropdown-item" href="business-login.php">Business Account</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Become an Investor</a></li>
+                                <li><a class="dropdown-item" href="invest-login.php">For Investors</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">

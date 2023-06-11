@@ -184,6 +184,24 @@ footer{
 }
 
 .mylink a{
-    color: #dc3545;
+    color: #ff0019;
     text-decoration: none;
+}
+
+/* LOGINS PAGES */
+
+.form-login{
+    background-color: #198754;
+    padding: 3rem;
+    margin: 4rem 19rem;
+    color: #fff;
+    border-radius: 3rem;
+}
+
+.form-text{
+    color: #000 !important;
+}
+
+.form-link a{
+    color: #ff0019;
 }
