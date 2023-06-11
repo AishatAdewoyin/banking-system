@@ -81,9 +81,7 @@
                         perferendis iure molestiae quidem consequatur, dolor, doloremque maxime similique quae
                         aliquam blanditiis fugiat voluptas suscipit facilis tenetur non! Unde omnis dignissimos, et
                         nulla perspiciatis officiis saepe consequuntur. Nostrum praesentium, tempora quia et magnam
-                        ipsa sed. Voluptate dolor commodi fuga. Similique maiores commodi non delectus nisi amet
-                        quibusdam. Iste, animi recusandae! Et commodi eaque dolorem provident ipsum, deserunt
-                        obcaecati quisquam voluptatibus nulla fuga! commodi!</p>
+                        </p>
                     <img src="assets/images/laptop-graph.jpg" alt="">
                 </div>
             </div>
