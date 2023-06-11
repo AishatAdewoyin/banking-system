@@ -205,3 +205,21 @@ footer{
 .form-link a{
     color: #ff0019;
 }
+
+/* REG PAGES */
+
+.form-reg {
+    background-color: #04552f;
+    padding: 4rem;
+    color: #fff;
+    border-radius: 3rem;
+}
+
+.reg-form-section{
+    padding-top: 3rem;
+}
+
+input::placeholder,
+textarea::placeholder{
+    font-size: 12px !important;
+ }

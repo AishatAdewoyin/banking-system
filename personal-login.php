@@ -37,7 +37,7 @@
                     <label for="personal-password" class="form-label">Password:</label>
                     <input type="password" class="form-control"required  id="personal-password">
                 </div>
-                <div id="p-accName" class="form-link mb-2">Don't have an account? <a href="auth/personal-reg.php">Create Account Here</a></div>
+                <div id="p-accName" class="form-link mb-2">Don't have an account? <a href="personal-reg.php">Create Account Here</a></div>
                 <button type="submit" class="btn btn-danger">Submit</button>
             </div>
         </form>
