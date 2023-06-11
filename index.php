@@ -14,9 +14,7 @@
     <!-- Google fonts APIs -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@500&family=Roboto:wght@500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
 
 
     <title>💵TBNK Banking Plc</title>
@@ -25,51 +23,9 @@
 <body>
     <header>
         <!-- Navbar start -->
-        <nav class="navbar navbar-expand-lg fixed-top bg-body-secondary">
-            <div class="container">
-                <a class="navbar-brand fw-bolder text-success" href="#">💵TBNK</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#services">Our Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Create an Account</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Login to Your Account
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Personal Account</a></li>
-                                <li><a class="dropdown-item" href="#">Business Account</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Become an Investor</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#about" class="nav-link active">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#contact" class="nav-link active">Contact Us</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search for services"
-                            aria-label="Search">
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
+        <?php
+        include_once "services/navbar.php";
+        ?>
         <!-- Nav ends-->
 
         <!-- headimg start -->
@@ -119,21 +75,21 @@
         <section id="about" class="container about">
             <div class="container">
                 <div class="container design p-5">
-                <h2>About Us</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae velit qui aliquam.
-                    Dolorem enim et, numquam natus impedit voluptates voluptatibus temporibus error eveniet
-                    perferendis iure molestiae quidem consequatur, dolor, doloremque maxime similique quae
-                    aliquam blanditiis fugiat voluptas suscipit facilis tenetur non! Unde omnis dignissimos, et
-                    nulla perspiciatis officiis saepe consequuntur. Nostrum praesentium, tempora quia et magnam
-                    ipsa sed. Voluptate dolor commodi fuga. Similique maiores commodi non delectus nisi amet
-                    quibusdam. Iste, animi recusandae! Et commodi eaque dolorem provident ipsum, deserunt
-                    obcaecati quisquam voluptatibus nulla fuga! commodi!</p>
-                <img src="assets/images/laptop-graph.jpg" alt="">
+                    <h2>About Us</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae velit qui aliquam.
+                        Dolorem enim et, numquam natus impedit voluptates voluptatibus temporibus error eveniet
+                        perferendis iure molestiae quidem consequatur, dolor, doloremque maxime similique quae
+                        aliquam blanditiis fugiat voluptas suscipit facilis tenetur non! Unde omnis dignissimos, et
+                        nulla perspiciatis officiis saepe consequuntur. Nostrum praesentium, tempora quia et magnam
+                        ipsa sed. Voluptate dolor commodi fuga. Similique maiores commodi non delectus nisi amet
+                        quibusdam. Iste, animi recusandae! Et commodi eaque dolorem provident ipsum, deserunt
+                        obcaecati quisquam voluptatibus nulla fuga! commodi!</p>
+                    <img src="assets/images/laptop-graph.jpg" alt="">
                 </div>
             </div>
         </section>
         <section id="contact" class="container contact text-center my-5">
-            <h2 class="py-5">Contacts</h2>
+            <h2 class="py-4">Contacts</h2>
             <div class=" row row-cols-1 container">
                 <div class="col-lg-6 contactdiv text-start">
                     <h5>Social Media:</h5>
@@ -154,28 +110,28 @@
                 <div class="col-lg-6 text-start">
                     <div class="text-start">
                         <form action="" method="post">
-                        <label for="exampleFormControlInput1" class="form-label">Full Name:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Full Name">
-                        <label for="exampleFormControlInput1" class="form-label">Email Address:</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                      </div>
-                      <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Full Name:</label>
+                            <input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Full Name">
+                            <label for="exampleFormControlInput2" class="form-label">Email Address:</label>
+                            <input type="email" class="form-control mb-3" id="exampleFormControlInput2" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Your Message:</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write your message"></textarea>
-                      </div>
-                      <div class="d-grid gap-2 col-6 mx-auto">
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
                         <button class="btn btn-danger" type="submit">Send Message</button>
-                      </div>
+                    </div>
                     </form>
                 </div>
             </div>
         </section>
     </main>
     <footer>
-
+        <div class="">
+            <p>All Rights Reserved, <span class="tbnkfoot">💵TBNK PLC</span> <sup>&#169</sup> 2024. Developed By<span class="mylink"><a href="https://github.com/Aishat452" target="_blank"> Aishat Adewoyin</a></span></p>
+        </div>
     </footer>
-    <script src="https://kit.fontawesome.com/c5721412b0.js" crossorigin="anonymous"></script>
-
     <script src="assets/JS/bootstrap.bundle.min.js"></script>
     <script src="assets/JS/index.js"></script>
 </body>

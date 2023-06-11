@@ -144,6 +144,11 @@ div .icon-box{
     font-size: 2.5rem;
 }
 
+textarea{
+    resize: none !important;
+    height: 10rem;
+}
+
 .contactdiv .others li a{
     text-decoration: none;
     margin: 0 .8rem;
@@ -155,3 +160,66 @@ iframe{
     border-radius: 20px;
 }
 
+/* FOOTER */
+
+footer div{
+    background-color: #198754;
+    height: 7rem;
+    border-top-right-radius: 100rem;
+    border-top-left-radius: 100rem;
+    /* position: relative; */
+}
+
+footer div p {
+    padding: 3rem 0 0 25rem;
+    color: #fff;
+}
+
+footer{
+    margin-top: 8rem;
+}
+
+.tbnkfoot{
+    color: aqua;
+}
+
+.mylink a{
+    color: #ff0019;
+    text-decoration: none;
+}
+
+/* LOGINS PAGES */
+
+.form-login{
+    background-color: #198754;
+    padding: 3rem;
+    margin: 4rem 19rem;
+    color: #fff;
+    border-radius: 3rem;
+}
+
+.form-text{
+    color: #000 !important;
+}
+
+.form-link a{
+    color: #ff0019;
+}
+
+/* REG PAGES */
+
+.form-reg {
+    background-color: #04552f;
+    padding: 4rem;
+    color: #fff;
+    border-radius: 3rem;
+}
+
+.reg-form-section{
+    padding-top: 3rem;
+}
+
+input::placeholder,
+textarea::placeholder{
+    font-size: 12px !important;
+ }
