@@ -164,11 +164,26 @@ iframe{
 
 footer div{
     background-color: #198754;
-    height: 10rem;
+    height: 7rem;
     border-top-right-radius: 100rem;
     border-top-left-radius: 100rem;
+    /* position: relative; */
+}
+
+footer div p {
+    padding: 3rem 0 0 25rem;
+    color: #fff;
 }
 
 footer{
     margin-top: 8rem;
+}
+
+.tbnkfoot{
+    color: aqua;
+}
+
+.mylink a{
+    color: #dc3545;
+    text-decoration: none;
 }

@@ -129,7 +129,7 @@
     </main>
     <footer>
         <div class="">
-
+            <p>All Rights Reserved, <span class="tbnkfoot">💵TBNK PLC</span> <sup>&#169</sup> 2024. Developed By<span class="mylink"><a href="https://github.com/Aishat452" target="_blank"> Aishat Adewoyin</a></span></p>
         </div>
     </footer>
     <script src="assets/JS/bootstrap.bundle.min.js"></script>
