@@ -1,8 +1,8 @@
-### Coming Soon: My INTERNSHIP AT "The Sparks Foundation" 
+### Coming Soon: My INTERNSHIP Together with MENTORSHIP (Mentor: Martha Kaburi) on: 
 
 ## Dynamic Banking Website
 
-This is a simple dynamic website that allows users(bank sustem admins) to transfer money between multiple customers. The website is designed to handle up to 10 customers and record all transfer transactions in a database. There is no login page or user creation functionality included in this website.
+A simple and dynamic website that allows users(bank system admins) to transfer money between multiple customers. This website is designed to handle up to 10 customers and record all transfer transactions in a database. There is login page & user creation functionality included in this website.
 
 ### The Features
 
