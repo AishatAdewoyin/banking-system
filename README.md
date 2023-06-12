@@ -1,4 +1,4 @@
-### Coming Soon: My INTERNSHIP Together with MENTORSHIP (Mentor: Martha Kaburi) on: 
+### Coming Soon: My INTERNSHIP Together with MENTORSHIP (My Mentor: Martha Kaburi) on: 
 
 ## Dynamic Banking Website
 
