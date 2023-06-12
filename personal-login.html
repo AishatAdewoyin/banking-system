@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/CSS/style.css">
-    <link rel="stylesheet" href="assets/CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonticons/css/all.css">
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="stylesheet" href="/assets/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fonticons/css/all.css">
 
     <!-- Google fonts APIs -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +20,13 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top bg-body-secondary">
+            <div class="container mb-2">
+                <a class="navbar-brand fw-bolder text-success" alt="logo: takes you back to the homepage" href="/index.html">💵TBNK</a>
+            </div>
+        </nav>
+    </header>
     <section class="container">
         <form class="form-login" action="" method="">
             <h2>Welcome Back!</h2>
@@ -37,15 +44,15 @@
                     <label for="personal-password" class="form-label">Password:</label>
                     <input type="password" class="form-control"required  id="personal-password">
                 </div>
-                <div id="p-accName" class="form-link mb-2">Don't have an account? <a href="personal-reg.php">Create Account Here</a></div>
-                <button type="submit" class="btn btn-danger">Submit</button>
+                <div id="p-accName" class="form-link mb-2">Don't have an account? <a href="auth/personal-reg.html" alt="go to personal registration page">Create Account Here</a></div>
+                <button type="submit" class="btn btn-danger" alt="Login">Login</button>
             </div>
         </form>
     </section>
 
 
-    <script src="assets/JS/bootstrap.bundle.min.js"></script>
-    <script src="assets/JS/index.js"></script>
+    <script src="/assets/JS/bootstrap.bundle.min.js"></script>
+    <script src="/assets/JS/index.js"></script>
 </body>
 
 </html>
