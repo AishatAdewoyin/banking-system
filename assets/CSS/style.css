@@ -32,6 +32,11 @@ main {
     background-color: #cafde8 !important;
 }
 
+.admin{
+    font-size: 1rem !important;
+    color: #797474 !important;
+}
+
 /* Hero */
 
 .hero {
