@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/CSS/style.css">
+    <link rel="stylesheet" href="../../assets/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/fonticons/css/all.css">
+
+    <!-- Google fonts APIs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+
+    <title>💵 Customer's Details</title>
+</head>
+<body>
+    <header class="">
+        <nav class="navbar navbar-expand-lg fixed-top bg-body-dark bg-warning">
+            <div class="container mb-1">
+                <a class="navbar-brand fw-bolder text-success" alt="logo: takes you back to the homepage" href="/index.html">💵TBNK</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container customers-table-section">
+        <table class="table bg-secondary table-striped">
+            <thead class="bg-warning">
+              <tr>
+                <th>Customer Name</th>
+                <th>Account Number</th>
+                <th>Account Balance</th>
+                <th>Transaction History</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Personal Account -->
+              <tr>
+                <td>John Doe</td>
+                <td>123456789</td>
+                <td>$5,000.00</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-warning dropdown-toggle" type="button" id="transactionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      View Transactions
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="transactionDropdown">
+                      <li><a class="dropdown-item" href="#">Transaction 1</a></li>
+                      <li><a class="dropdown-item" href="#">Transaction 2</a></li>
+                      <li><a class="dropdown-item" href="#">Transaction 3</a></li>
+                      <!-- Add more transactions as needed -->
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              <!-- Business Account -->
+              <tr>
+                <td>Acme Corp</td>
+                <td>987654321</td>
+                <td>$10,000.00</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-warning dropdown-toggle" type="button" id="transactionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      View Transactions
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="transactionDropdown">
+                      <li><a class="dropdown-item" href="#">Transaction 1</a></li>
+                      <li><a class="dropdown-item" href="#">Transaction 2</a></li>
+                      <li><a class="dropdown-item" href="#">Transaction 3</a></li>
+                      <!-- Add more transactions as needed -->
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              <!-- Add more customer details as needed -->
+            </tbody>
+          </table>
+    </section>
+      
+
+    <script src="../../assets/JS/bootstrap.bundle.min.js"></script>
+</body>
+</html>
