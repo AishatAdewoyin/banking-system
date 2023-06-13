@@ -239,6 +239,10 @@ textarea::placeholder {
 @media (max-width: 575.98px) {
 
     /* HERO */
+    .admin{
+        display: none;
+    }
+
     .hero {
         padding: 8rem 1rem;
     }
@@ -329,6 +333,11 @@ textarea::placeholder {
 
     /* CONTACT */
 
+    .contactdiv{
+        text-align: center !important;
+    }
+
+
     .contact h2{
         font-size: 1.25rem;
     }
@@ -344,6 +353,11 @@ textarea::placeholder {
         font-size: 1.5rem;
     }
 
+    .contactdiv .others {
+        list-style: none;
+        margin-right: 10px;
+        flex-wrap: wrap;
+    }
     .contactdiv .others li a {
         font-size: .8rem;
     }
@@ -372,7 +386,8 @@ textarea::placeholder {
 
     footer div p {
         color: #fff;
-        font-size: .8rem;
+        font-size: .7rem;
+        padding-top: 4rem;
     }
 
 
