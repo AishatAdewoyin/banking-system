@@ -229,8 +229,24 @@ textarea::placeholder {
     font-size: 12px !important;
 }
 
+/* CUSTOMERS PAGE */
 
-/* MEDIA QUERIES */
+.customers-table-section,
+.admin-main-page,
+.transfers-page{
+    margin-top: 7rem !important;
+}
+
+/* TRANSFER PAGE */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+/****** MEDIA QUERIES **********/
 
 /* `xs` returns only a ruleset and no media query
  ... { ... } */

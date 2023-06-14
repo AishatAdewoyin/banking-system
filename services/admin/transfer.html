@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/CSS/style.css">
+    <link rel="stylesheet" href="../../assets/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/fonticons/css/all.css">
+
+    <!-- Google fonts APIs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@500&family=Roboto:wght@500&display=swap"
+        rel="stylesheet">
+
+
+    <title>💵 Transfers Details</title>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar navbar-expand-lg fixed-top bg-body-dark bg-warning">
+            <div class="container mb-1">
+                <a class="navbar-brand fw-bolder text-success" alt="logo: takes you back to the homepage" href="../../index.html">💵TBNK</a>
+                <div class="nav-item me-3 admin">
+                    <a href="./customers.html" alt="" class="nav-link active admin">All Customer's</a>
+                </div>
+            </div>
+            
+        </nav>
+    </header>
+
+    <section class="container transfers-page  transfer-form-section">
+        <h3 class="text-center">Transfer Money</h3>
+        <form class="bg-secondary p-5">
+            <div class="mb-3">
+                <label for="sender" class="form-label">Sender:</label>
+                <select id="sender" class="form-select">
+                    <!-- Fetch and populate the select options dynamically with the list of customers -->
+                    <option value="1">John Doe</option>
+                    <!-- Repeat the above option structure for other customers -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="recipient" class="form-label">Recipient:</label>
+                <select id="recipient" class="form-select">
+                    <!-- Fetch and populate the select options dynamically with the list of customers -->
+                    <option value="1">John Doe</option>
+                    <!-- Repeat the above option structure for other customers -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount (NGN)</label>
+                <input type="number" id="amount" class="form-control" placeholder="Enter amount to transfer" min="500" step="any">
+              </div>
+              
+            <button type="submit" class="btn btn-primary">Transfer</button>
+        </form>
+    </section>
+
+    <script src="../../assets/JS/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/JS/index.js"></script>
+</body>
+
+</html>
