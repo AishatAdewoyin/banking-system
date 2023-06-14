@@ -233,7 +233,8 @@ textarea::placeholder {
 
 .customers-table-section,
 .admin-main-page,
-.transfers-page{
+.transfers-page,
+.customer-details-section{
     margin-top: 7rem !important;
 }
 
