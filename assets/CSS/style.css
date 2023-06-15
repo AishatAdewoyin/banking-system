@@ -165,6 +165,9 @@ textarea {
 iframe {
     border-radius: 20px;
 }
+.contactbtn{
+    margin-bottom: 1.5rem !important;
+}
 
 /* FOOTER */
 
@@ -362,7 +365,7 @@ input[type="number"]::-webkit-outer-spin-button {
     .contactdiv h5,
     .contactdiv h4{
         font-size: 1rem;
-        line-height: .9rem !important;
+        line-height: 2.5rem !important;
         margin: 0 !important;
     }
 
