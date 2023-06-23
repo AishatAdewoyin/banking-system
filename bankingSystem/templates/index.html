@@ -23,9 +23,9 @@
 <body>
     <header>
         <!-- Navbar start -->
-        <nav class="navbar navbar-expand-lg fixed-top bg-body-secondary">
+        <!-- <nav class="navbar navbar-expand-lg fixed-top bg-body-secondary">
             <div class="container">
-                <a class="navbar-brand fw-bolder text-success" alt="logo and homepage" href="index.html">💵TBNK</a>
+                <a class="navbar-brand fw-bolder text-success" alt="logo and homepage" href="./index.html">💵TBNK</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -42,12 +42,12 @@
                                 Create an Account
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" alt="creat a personal account" href="auth/personal-reg.html">Create a Personal Account</a></li>
-                                <li><a class="dropdown-item"  alt="create a business account" href="auth/business-reg.html">Create a Business Account</a></li>
+                                <li><a class="dropdown-item" alt="creat a personal account" href="./customers-reg/personal-reg.html">Create a Personal Account</a></li>
+                                <li><a class="dropdown-item"  alt="create a business account" href="./customers-reg/business-reg.html">Create a Business Account</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" alt="create an investors account" href="auth/invest-reg.html">Become an Investor</a></li>
+                                <li><a class="dropdown-item" alt="create an investors account" href="./customers-reg/invest-reg.html">Become an Investor</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -56,12 +56,12 @@
                                 Login to Your Account
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" alt="login to personal account" href="personal-login.html">Personal Account</a></li>
-                                <li><a class="dropdown-item" alt="login to business account" href="business-login.html">Business Account</a></li>
+                                <li><a class="dropdown-item" alt="login to personal account" href="./customers-login/personal-login.html">Personal Account</a></li>
+                                <li><a class="dropdown-item" alt="login to business account" href="./customers-login/business-login.html">Business Account</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" alt="login to inveators account" href="invest-login.html">For Investors</a></li>
+                                <li><a class="dropdown-item" alt="login to inveators account" href="./customers-login/invest-login.html">For Investors</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -77,11 +77,73 @@
                         <button class="btn btn-success" alt="search button" type="search">Search</button>
                     </form>
                     <div class="nav-item ms-1 admin">
-                        <a href="services/admin/admin-login.html" alt="Admin home button" class="nav-link active admin">Admin</a>
+                        <a href="./admin/admin-login.html" alt="Admin home button" class="nav-link active admin">Admin</a>
+                    </div>
+                </div>
+            </div>
+        </nav> -->
+
+
+        <nav class="navbar navbar-expand-lg fixed-top bg-body-secondary">
+            <div class="container">
+                <a class="navbar-brand fw-bolder text-success" alt="logo and homepage" href="{% url './index.html' %}">💵TBNK</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" alt="navigate to our services" href="#services">Our Services</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" alt="dropdown to create different accounts" aria-current="page" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Create an Account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" alt="create a personal account" href="{% url './customers-reg/personal-reg.html' %}">Create a Personal Account</a></li>
+                                <li><a class="dropdown-item" alt="create a business account" href="{% url 'business_reg' %}">Create a Business Account</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" alt="create an investors account" href="{% url 'invest_reg' %}">Become an Investor</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" alt="dropdown to login to different accounts" aria-current="page" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Login to Your Account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" alt="login to personal account" href="{% url 'personal_login' %}">Personal Account</a></li>
+                                <li><a class="dropdown-item" alt="login to business account" href="{% url 'business_login' %}">Business Account</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" alt="login to investors account" href="{% url 'invest_login' %}">For Investors</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#about" alt="go to about us section" class="nav-link active">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contact" alt="go to contact us section" class="nav-link active">Contact Us</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" alt="search" type="search" placeholder="Search for services"
+                            aria-label="Search">
+                        <button class="btn btn-success" alt="search button" type="search">Search</button>
+                    </form>
+                    <div class="nav-item ms-1 admin">
+                        <a href="{% url 'admin_login' %}" alt="Admin home button" class="nav-link active admin">Admin</a>
                     </div>
                 </div>
             </div>
         </nav>
+        
         <!-- Nav ends-->
 
         <!-- headimg start -->
@@ -138,7 +200,7 @@
                         aliquam blanditiis fugiat voluptas suscipit facilis tenetur non! Unde omnis dignissimos, et
                         nulla perspiciatis officiis saepe consequuntur. Nostrum praesentium, tempora quia et magnam
                         </p>
-                    <img src="assets/images/laptop-graph.jpg" alt="">
+                    <img src="../bankingSystem/static/images/laptop-graph.jpg" alt="">
                 </div>
             </div>
         </section>
