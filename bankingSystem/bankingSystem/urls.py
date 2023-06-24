@@ -19,9 +19,17 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-app_name = 'bankingSystem' #just added
+app_name = 'bankingSystem'
 
 urlpatterns = [
     path('', views.index_view, name='index'),  # Home page
+    path('customers-reg/personal-reg/', views.personal_registration_view, name='personal-registration'),  # Personal registration
+    path('customers-reg/business-reg/', views.business_registration_view, name='business-registration'),  # Business registration
+    path('customers-reg/investor-reg/', views.investor_registration_view, name='investor-registration'),  # Investor registration
+    path('customers-login/personal-login/', views.personal_login_view, name='personal-login'),  # Personal account login
+    path('customers-login/business-login/', views.business_login_view, name='business-login'),  # Business account login
+    path('customers-login/investor-login/', views.investor_login_view, name='investor-login'),  # Investor account login
+    path('admin-login/', views.admin_login_view, name='admin-login'), # Admin account login
     path('admin/', admin.site.urls),
 ]
+
