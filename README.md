@@ -14,7 +14,7 @@ Select customer to transfer to: Provides a list of customers to choose from for 
 View all Customers: Displays the updated list of all customers after a transfer transaction.
 
 Database
-The website requires a database to store customer information and transfer records. You can choose from various database options such as MySQL, MongoDB, or Postgres. For this project, you need to create a database with a table named "Customers" and a table named "Transfers".
+The website requires a database to store customer information and transfer records. I'm using PostgreSQL. For this project, I should create a database with a table named "Customers" and a table named "Transfers".
 
 The "Customers" table will include the following fields:
 
