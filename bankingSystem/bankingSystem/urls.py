@@ -30,6 +30,22 @@ urlpatterns = [
     path('customers-login/business-login/', views.business_login_view, name='business-login'),  # Business account login
     path('customers-login/investor-login/', views.investor_login_view, name='investor-login'),  # Investor account login
     path('admin-login/', views.admin_login_view, name='admin-login'), # Admin account login
+
+    path('admin-home/', views.admin_mainpage_view, name='admin-homepage'), # Admin main page
+
+    path('admin-home/', views.admin_mainpage_view, name='admin-homepage'),  # Admin main page
+
+    path('customers-list/', views.customers_list_view, name='customers-list'),  # Customers list
+
+    path('single-personal-page/', views.single_personal_page_view, name='single-personal-page'),  # Single personal customer page
+
+    path('single-business-page/', views.single_business_page_view, name='single-business-page'),  # Single business customer page
+
+    path('single-investor-page/', views.single_investor_page_view, name='single-investor-page'),  # Single investor customer page
+    
+    path('transfer-page/', views.transfer_page_view, name='transfer-page'),  # Transfer page
+
+    # MAIN BACKEND DEV LOGIN
     path('admin/', admin.site.urls),
 ]
 

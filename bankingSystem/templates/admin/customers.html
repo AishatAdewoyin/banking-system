@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../../assets/CSS/style.css">
-    <link rel="stylesheet" href="../../assets/CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/fonticons/css/all.css">
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonticons/css/all.css' %}" />
 
     <!-- Google fonts APIs -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -222,7 +223,8 @@
 
 
 
-    <script src="../../assets/JS/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'JS/index.js' %}"></script>
 </body>
 
 </html>

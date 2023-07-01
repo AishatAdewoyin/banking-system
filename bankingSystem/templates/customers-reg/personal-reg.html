@@ -25,12 +25,7 @@
     <header>
       <nav class="navbar navbar-expand-lg fixed-top bg-body-secondary">
         <div class="container mb-2">
-          <a
-            class="navbar-brand fw-bolder text-success"
-            href="/index.html"
-            alt="logo: takes you back to the homepage"
-            >💵TBNK</a
-          >
+          <a class="navbar-brand fw-bolder text-success" href="{% url 'index' %}" alt="logo and homepage">💵TBNK</a>
         </div>
       </nav>
     </header>
@@ -145,7 +140,7 @@
         </div>
         <div id="i-accName" class="form-link mb-2">
           Already have an account?
-          <a href="/personal-login.html" alt="go to personal login page"
+          <a href="{% url 'personal-login' %}" alt="go to personal login page"
             >Login Here</a
           >
         </div>

@@ -23,7 +23,7 @@
     <header>
         <nav class="navbar navbar-expand-lg fixed-top bg-body-secondary">
             <div class="container mb-2">
-                <a class="navbar-brand fw-bolder text-success" href="/index.html" alt="logo: takes you back to the homepage">💵TBNK</a>
+                <a class="navbar-brand fw-bolder text-success" href="{% url 'index' %}" alt="logo and homepage">💵TBNK</a>
             </div>
         </nav>
     </header>
@@ -101,7 +101,7 @@
                 <label for="zipcode" class="form-label">Zip Code:</label>
                 <input type="text" name="zipcode" class="form-control" id="zipcode">
             </div>
-            <div id="i-accName" class="form-link mb-2">Already have an account? <a href="/business-login.html" alt="link to business login page">Login Here</a></div>
+            <div id="i-accName" class="form-link mb-2">Already have an account? <a href="{% url 'business-login' %}" alt="link to business login page">Login Here</a></div>
             <div class="col-12">
                 <button type="submit" class="btn btn-danger" alt="create a business account">Create an Account</button>
             </div>

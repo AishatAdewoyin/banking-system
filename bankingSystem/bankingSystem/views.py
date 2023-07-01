@@ -34,4 +34,26 @@ def admin_login_view(request):
     # View function for admin account login
     return render(request, 'admin/admin-login.html')
 
+def admin_mainpage_view(request):
+    # View function for admin homepage
+    return render(request, 'admin/admin-home.html')
 
+def customers_list_view(request):
+    # View function for customers list
+    return render(request, 'admin/customers.html')
+
+def single_personal_page_view(request):
+    # View function for admin homepage
+    return render(request, 'admin/single-personal-customer.html')
+
+def single_business_page_view(request):
+    # View function for admin homepage
+    return render(request, 'admin/single-business-customer.html')
+
+def single_investor_page_view(request):
+    # View function for admin homepage
+    return render(request, 'admin/single-imvestor-customer.html')
+
+def transfer_page_view(request):
+    # View function for admin homepage
+    return render(request, 'admin/transfer.html')
