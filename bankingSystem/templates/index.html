@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/CSS/style.css">
-    <link rel="stylesheet" href="../static/CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/fonticons/css/all.css">
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonticons/css/all.css' %}" />
 
     <!-- Google fonts APIs -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,8 +187,8 @@
             <p>All Rights Reserved, <span class="tbnkfoot">💵TBNK PLC</span> <sup>&#169</sup> 2024. Developed By<span class="mylink"><a href="https://github.com/Aishat452" alt="link to Aishats portfolio" target="_blank"> Aishat Adewoyin</a></span></p>
         </div>
     </footer>
-    <script src="../static/JS/bootstrap.bundle.min.js"></script>
-    <script src="../static/JS/index.js"></script>
+    <script src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'JS/index.js' %}"></script>
 </body>
 
 </html>
