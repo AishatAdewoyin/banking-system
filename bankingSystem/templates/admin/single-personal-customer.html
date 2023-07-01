@@ -24,9 +24,9 @@
     <header class="container">
         <nav class="navbar navbar-expand-lg fixed-top bg-body-dark bg-warning">
             <div class="container mb-1">
-                <a class="navbar-brand fw-bolder text-success" alt="logo: takes you back to the homepage" href="../../index.html">💵TBNK</a>
+                <a class="navbar-brand fw-bolder text-success" alt="logo: takes you back to the homepage" href="{% url 'index' %}">💵TBNK</a>
                 <div class="nav-item me-3 admin">
-                    <a href="./customers.html" alt="" class="nav-link active admin">All Customer's</a>
+                    <a href="{% url 'customers-list' %}" alt="" class="nav-link active admin">All Customer's</a>
                 </div>
             </div>
             

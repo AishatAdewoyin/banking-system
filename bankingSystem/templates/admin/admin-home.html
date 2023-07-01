@@ -20,7 +20,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-warning">
     <div class="container">
-      <a class="navbar-brand fw-bolder text-success" href="#">💵TBNK</a>
+      <a class="navbar-brand fw-bolder text-success" href="{% url 'index' %}">💵TBNK</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto text-bg-dark rounded-4 text-center p-1">
           <li class="nav-item">
-            <a class="nav-link active" href="customers.html">View All Customers</a>
+            <a class="nav-link active" href="{% url 'customers-list' %}">View All Customers</a>
           </li>
         </ul>
       </div>
