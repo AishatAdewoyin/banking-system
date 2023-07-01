@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import admin
 
 #first page's requests
 def index_view(request):
