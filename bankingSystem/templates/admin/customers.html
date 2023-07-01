@@ -27,9 +27,9 @@
         <nav class="navbar navbar-expand-lg fixed-top bg-body-dark bg-warning">
             <div class="container mb-1">
                 <a class="navbar-brand fw-bolder text-success" alt="logo: takes you back to the homepage"
-                    href="../../index.html">💵TBNK</a>
+                    href="{% url 'index' %}">💵TBNK</a>
                 <div class="nav-item me-3 admin">
-                    <a href="./admin.html" alt="Admin home button" class="nav-link active admin">Admin Homepage</a>
+                    <a href="{% url 'admin-homepage' %}" alt="Admin home button" class="nav-link active admin">Admin Homepage</a>
                 </div>
             </div>
 
@@ -61,8 +61,8 @@
                                 View Transactions
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="transactionDropdown">
-                                <li><a class="dropdown-item" href="./single-personal-customer.html?id=1">View this customers transactions</a></li>
-                                <li><a class="dropdown-item" href="./transfer.html">Transfer between customers</a></li>
+                                <li><a class="dropdown-item" href="{% url 'single-personal-page'%}">View this customers transactions</a></li>
+                                <li><a class="dropdown-item" href="{% url 'transfer-page'%}">Transfer between customers</a></li>
                             </ul>
                         </div>
                     </td>
@@ -79,8 +79,8 @@
                                 View Transactions
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="transactionDropdown">
-                                <li><a class="dropdown-item" href="./single-personal-customer.html?id=2">View this customers transactions</a></li>
-                                <li><a class="dropdown-item" href="./transfer.html">Transfer between customers</a></li>
+                                <li><a class="dropdown-item" href="{% url 'single-personal-page'%}">View this customers transactions</a></li>
+                                <li><a class="dropdown-item" href="{% url 'transfer-page'%}">Transfer between customers</a></li>
                             </ul>
                         </div>
                     </td>
@@ -113,8 +113,8 @@
                                 View Transactions
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="transactionDropdown">
-                                <li><a class="dropdown-item" href="./single-business-customer.html?id=1">View this customers transactions</a></li>
-                                <li><a class="dropdown-item" href="./transfer.html">Transfer between customers</a></li>
+                                <li><a class="dropdown-item" href="{% url 'single-business-page'%}">View this customers transactions</a></li>
+                                <li><a class="dropdown-item" href="{% url 'transfer-page'%}">Transfer between customers</a></li>
                             </ul>
                         </div>
                     </td>
@@ -131,8 +131,8 @@
                                 View Transactions
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="transactionDropdown">
-                                <li><a class="dropdown-item" href="./single-business-customer.html?id=2">View this customers transactions</a></li>
-                                <li><a class="dropdown-item" href="./transfer.html">Transfer between customers</a></li>
+                                <li><a class="dropdown-item" href="{% url 'single-business-page'%}">View this customers transactions</a></li>
+                                <li><a class="dropdown-item" href="{% url 'transfer-page'%}">Transfer between customers</a></li>
                             </ul>
                         </div>
                     </td>
@@ -164,8 +164,8 @@
                                 View Transactions
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="transactionDropdown">
-                                <li><a class="dropdown-item" href="./single-investor-customer.html?id=1">View this customers transactions</a></li>
-                                <li><a class="dropdown-item" href="./transfer.html">Transfer between customers</a></li>
+                                <li><a class="dropdown-item" href="{% url 'single-investor-page'%}">View this customers transactions</a></li>
+                                <li><a class="dropdown-item" href="{% url 'transfer-page'%}">Transfer between customers</a></li>
                             </ul>
                         </div>
                     </td>
@@ -182,8 +182,8 @@
                                 View Transactions
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="transactionDropdown">
-                                <li><a class="dropdown-item" href="./single-investor-customer.html?id=2">View this customers transactions</a></li>
-                                <li><a class="dropdown-item" href="./transfer.html">Transfer between customers</a></li>
+                                <li><a class="dropdown-item" href="{% url 'single-investor-page'%}">View this customers transactions</a></li>
+                                <li><a class="dropdown-item" href="{% url 'transfer-page'%}">Transfer between customers</a></li>
                             </ul>
                         </div>
                     </td>
@@ -193,7 +193,7 @@
         </table>
     </section>
 
-    <!-- <section class="container customers-table-section">
+    <section class="container customers-table-section">
         <h3 class="text-center">Customers Table</h3>
         <table class="table bg-secondary table-striped">
             <thead class="bg-warning">
@@ -205,7 +205,7 @@
                 </tr>
             </thead>
             <tbody>
-            Fetch and populate the table rows dynamically from the database
+            <h6 class="text-center">Fetch and populate the table rows dynamically from the database<h6/>
                 <tr>
                     <td>John Doe</td>
                     <td>123456789</td>
@@ -214,7 +214,7 @@
                         <a href="single-customer.html?id=1">View Transactions</a>
                     </td>
                 </tr>
-                 Repeat the above row structure for other customers -->
+                <h6 class="text-center">Repeat the above row structure for other customers<h6/>
             </tbody>
         </table>
     </section>

@@ -52,7 +52,7 @@ def single_business_page_view(request):
 
 def single_investor_page_view(request):
     # View function for admin homepage
-    return render(request, 'admin/single-imvestor-customer.html')
+    return render(request, 'admin/single-investor-customer.html')
 
 def transfer_page_view(request):
     # View function for admin homepage
