@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonticons/css/all.css' %}" />
+
+    <!-- Google fonts APIs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+
+    <title>💵 Single Business Details</title>
+</head>
+
+<body>
+    <header class="container">
+      <nav class="navbar navbar-expand-lg fixed-top bg-body-dark bg-warning">
+        <div class="container mb-1">
+            <a class="navbar-brand fw-bolder text-success" alt="logo: takes you back to the homepage" href="{% url 'index' %}">💵TBNK</a>
+            <div class="nav-item me-3 admin">
+                <a href="{% url 'customers-list' %}" alt="" class="nav-link active admin">All Customer's</a>
+            </div>
+        </div>
+        
+    </nav>
+    </header>
+  
+  <section class="container customer-details-section">
+    <h3 class="text-center">Customer Details</h3>
+    <table class="table bg-secondary table-striped">
+      <thead class="bg-warning">
+        <tr>
+          <th>Customer Name</th>
+          <th>Account Number</th>
+          <th>Account Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Fetch and populate the table row dynamically based on the selected customer -->
+        <tr>
+          <td>John Doe</td>
+          <td>123456789</td>
+          <td>$5,000.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="text-center">Transaction History</h3>
+    <ul class="list-group">
+      <!-- Fetch and populate the list items dynamically with the transaction history of the selected customer -->
+      <li class="list-group-item">Transaction 1</li>
+      <li class="list-group-item">Transaction 2</li>
+      <!-- Repeat the above list item structure for other transactions -->
+    </ul>
+  </section>
+
+  <script src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'JS/index.js' %}"></script>
+</body>
+
+</html>
