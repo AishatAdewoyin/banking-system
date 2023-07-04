@@ -75,10 +75,10 @@ WSGI_APPLICATION = 'bankingSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'banking_system',
-        'USER':'postgres',
-        'PASSWORD':'Adeladun001%',
-        'HOST':'localhost',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_USER_PASSWORD'),
+        'HOST':os.environ.get('DB_HOST'),
         'PORT':5000
     }
 }
