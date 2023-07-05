@@ -60,6 +60,15 @@ urlpatterns = [
     path('investor-dashboard/', views.investor_dashboard_view,
     name='investor-dashboard'),  # Investor dashboard page
 
+    path('personal-password-reset/', views.personal_password_reset_view,
+    name='personal-password-reset'),  # personal password reset page
+
+    path('business-password-reset/', views.business_dashboard_view,
+    name='business-password-reset'),  # business password reset page
+
+    path('investors-password-reset/', views.investor_dashboard_view,
+    name='investors-password-reset'),  # investors password reset page
+
     # MAIN BACKEND DEV LOGIN
     path('admin/', admin.site.urls),
 ]
