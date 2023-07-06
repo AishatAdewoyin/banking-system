@@ -1,59 +1,79 @@
 from django.shortcuts import render
 from django.contrib import admin
 
-#first page's requests
 def index_view(request):
     # View function for the home page
     return render(request, 'index.html')
 
 def personal_registration_view(request):
     # View function for personal account registration
-    return render(request, 'customers-reg/personal-reg.html')
+    return render(request, 'authentication/customers-reg/personal-reg.html')
 
 def business_registration_view(request):
     # View function for business account registration
-    return render(request, 'customers-reg/business-reg.html')
+    return render(request, 'authentication/customers-reg/business-reg.html')
 
 def investor_registration_view(request):
     # View function for investor account registration
-    return render(request, 'customers-reg/invest-reg.html')
+    return render(request, 'authentication/customers-reg/invest-reg.html')
 
 def personal_login_view(request):
     # View function for personal account login
-    return render(request, 'customers-login/personal-login.html')
+    return render(request, 'authentication/customers-login/personal-login.html')
 
 def business_login_view(request):
     # View function for business account login
-    return render(request, 'customers-login/business-login.html')
+    return render(request, 'authentication/customers-login/business-login.html')
 
 def investor_login_view(request):
     # View function for investor account login
-    return render(request, 'customers-login/invest-login.html')
+    return render(request, 'authentication/customers-login/invest-login.html')
 
 def admin_login_view(request):
     # View function for admin account login
-    return render(request, 'admin/admin-login.html')
+    return render(request, 'authentication/admin/admin-login.html')
 
 def admin_mainpage_view(request):
     # View function for admin homepage
-    return render(request, 'admin/admin-home.html')
+    return render(request, 'authentication/admin/admin-home.html')
 
 def customers_list_view(request):
     # View function for customers list
-    return render(request, 'admin/customers.html')
+    return render(request, 'authentication/admin/customers.html')
 
 def single_personal_page_view(request):
-    # View function for admin homepage
-    return render(request, 'admin/single-personal-customer.html')
+    # View function for single personal customer page
+    return render(request, 'authentication/admin/single-personal-customer.html')
 
 def single_business_page_view(request):
-    # View function for admin homepage
-    return render(request, 'admin/single-business-customer.html')
+    # View function for single business customer page
+    return render(request, 'authentication/admin/single-business-customer.html')
 
 def single_investor_page_view(request):
-    # View function for admin homepage
-    return render(request, 'admin/single-investor-customer.html')
+    # View function for single investor customer page
+    return render(request, 'authentication/admin/single-investor-customer.html')
 
-def transfer_page_view(request):
-    # View function for admin homepage
-    return render(request, 'admin/transfer.html')
+def personal_dashboard_view(request):
+    # View function for personal dashboard page
+    return render(request, 'authentication/customers-dashboard/personal-dashboard.html')
+
+def business_dashboard_view(request):
+    # View function for business dashboard page
+    return render(request, 'authentication/customers-dashboard/business-dashboard.html')
+
+def investor_dashboard_view(request):
+    # View function for investor dashboard page
+    return render(request, 'authentication/customers-dashboard/investor-dashboard.html')
+
+
+def personal_password_reset_view(request):
+    # View function for password reset page
+    return render(request, 'authentication/customers-reset-password/personal-password-reset.html')
+
+def business_password_reset_view(request):
+    # View function for business password reset page
+    return render(request, 'authentication/customers-reset-password/business-password-reset.html')
+
+def investors_password_reset_view(request):
+    # View function for investors password reset page
+    return render(request, 'authentication/customers-reset-password/investors-password-reset.html')
