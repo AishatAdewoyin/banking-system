@@ -14,14 +14,14 @@ Select customer to transfer to: Provides a list of customers to choose from for 
 View all Customers: Displays the updated list of all customers after a transfer transaction.
 
 Database
-The website requires a database to store customer information and transfer records. I'm using PostgreSQL. For this project, I should create a database with a table named "Customers" and a table named "Transfers".
+The website requires a database to store customer information and transfer records. I'm using PostgreSQL. For this project, I will create a database with a table named "Customers" and a table named "Transfers".
 
 The "Customers" table will include the following fields:
 
 Name: The name of the customer.
 Email: The email address of the customer.
 Current Balance: The current balance of the customer.
-The "Transfers" table should record all transfer transactions and include the following fields:
+The "Transfers" table will record all transfer transactions and include the following fields:
 
 Sender: The customer who sent the money.
 Receiver: The customer who received the money.
