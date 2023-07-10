@@ -1,4 +1,4 @@
-### Coming Soon: My INTERNSHIP Together with MENTORSHIP (My Mentor: Martha Kaburi) on: 
+### Coming Soon: My INTERNSHIP & MENTORSHIP (Mentor: Martha Kaburi) on: 
 
 ## Dynamic Banking Website
 
@@ -8,7 +8,7 @@ A simple and dynamic website that allows users(bank system admins) to transfer m
 
 Home Page: The landing page of the website.
 View all Customers: Displays a list of all the customers in the database.
-Select and View one Customer: Allows users to view the details of a specific customer.
+Select and View One Customer: Allows users to view the details of a specific customer.
 Transfer Money: it will enable users to transfer money from one customer to another.
 Select customer to transfer to: Provides a list of customers to choose from for transferring money.
 View all Customers: Displays the updated list of all customers after a transfer transaction.
