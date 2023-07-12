@@ -65,7 +65,6 @@ def investor_dashboard_view(request):
     # View function for investor dashboard page
     return render(request, 'authentication/customers-dashboard/investor-dashboard.html')
 
-
 def personal_password_reset_view(request):
     # View function for password reset page
     return render(request, 'authentication/customers-reset-password/personal-password-reset.html')

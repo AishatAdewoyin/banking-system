@@ -11,8 +11,14 @@ class PersonalFullnameValidationView(View):
         fullname = data['fname']
 
         if not str(fullname).isalpha():
-            return JsonResponse({'fullname_error': 'Full names should only contain alphabets'})
+            return JsonResponse({'fullname_error': 'Full names should only contain alphabets'}, status=400)
         return JsonResponse({'fullname_valid': True})
+
+        if User.object.filter(fullname=fullname).exists():
+            return JsonResponse({'fullname_error': 'Sorry, Full Name already exists, you can try to login'}, status=409)
+        return JsonResponse({'fullname_valid': True})
+
+
 
 
 

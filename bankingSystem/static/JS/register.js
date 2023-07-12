@@ -24,6 +24,22 @@
 //     // ...
 // });
 
+const fullnameField = document.querySelector('#full-name');
+
+fullnameField.addEventListener("keyup", (event) => {
+    console.log('7777777');
+
+    const fullnameValue = event.target.value;
+
+    if (fullnameValue.length > 0) {
+        fetch('/authentication/fullname_validation/', {
+            method: "POST",
+            body: JSON.stringify({ fullName: fullnameValue })
+        }).then(res => res.json())
+        .then(data => {
+            console.log('data', data);
+        });
+    }
+});
 
 
-  
