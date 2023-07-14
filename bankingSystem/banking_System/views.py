@@ -1,13 +1,42 @@
-from django.shortcuts import render
-from django.contrib import admin
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.db import connections
+
+
+
+
 
 def index_view(request):
     # View function for the home page
     return render(request, 'index.html')
 
+from django.db import connections
+
 def personal_registration_view(request):
-    # View function for personal account registration
+    if request.method == 'POST':
+        fullname = request.POST.get('fname')
+        email = request.POST.get('email')
+        user_password = request.POST.get('password')
+        user_address = request.POST.get('address')
+        user_address2 = request.POST.get('address2')
+        user_city = request.POST.get('city')
+        user_state = request.POST.get('state')
+        user_zipcode = request.POST.get('zipcode')
+
+        new_user = User.objects.create_user(fullname, email, user_password, using='personalAccounts')
+        new_user.user_address = user_address
+        new_user.user_address2 = user_address2
+        new_user.user_city = user_city
+        new_user.user_state = user_state
+        new_user.user_zipcode = user_zipcode
+
+        new_user.save(using='personalAccounts')
+
     return render(request, 'authentication/customers-reg/personal-reg.html')
+
 
 def business_registration_view(request):
     # View function for business account registration

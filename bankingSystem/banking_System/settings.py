@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authentication',
+    # 'authentication',
     'banking_system',
     # Add your other apps here
 ]
@@ -67,8 +67,30 @@ DATABASES = {
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_USER_PASSWORD'),
         'PORT': '5432',
-    }
+    },
+    'personalAccounts': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_PERSONAL_NAME'),
+        'USER': os.environ.get('DB_PERSONAL_USER'),
+        'PASSWORD': os.environ.get('DB_PERSONAL_USER_PASSWORD'),
+        'PORT': '5432',
+    },
+    'businessAccounts': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_BUSINESS_NAME'),
+        'USER': os.environ.get('DB_BUSINESS_USER'),
+        'PASSWORD': os.environ.get('DB_BUSINESS_USER_PASSWORD'),
+        'PORT': '5432',
+    },
+    'investorsAccounts': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_INVESTORS_NAME'),
+        'USER': os.environ.get('DB_INVESTORS_USER'),
+        'PASSWORD': os.environ.get('DB_INVESTORS_USER_PASSWORD'),
+        'PORT': '5432',
+    },
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
