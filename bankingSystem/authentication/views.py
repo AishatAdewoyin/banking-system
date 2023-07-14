@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 
 import json
-from django.views.generic import View
+from django.views import View
 
 class PersonalFullnameValidationView(View):
     def post(self, request):
@@ -12,15 +12,11 @@ class PersonalFullnameValidationView(View):
 
         if not str(fullname).isalpha():
             return JsonResponse({'fullname_error': 'Full names should only contain alphabets'}, status=400)
-        return JsonResponse({'fullname_valid': True})
 
-        if User.object.filter(fullname=fullname).exists():
+        if User.objects.filter(fullname=fullname).exists():
             return JsonResponse({'fullname_error': 'Sorry, Full Name already exists, you can try to login'}, status=409)
+
         return JsonResponse({'fullname_valid': True})
-
-
-
-
 
 
 
