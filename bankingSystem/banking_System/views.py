@@ -41,7 +41,6 @@ def personal_registration_view(request):
 
 
 def business_registration_view(request):
-    # View function for business account registration
     return render(request, 'authentication/customers-reg/business-reg.html')
 
 def investor_registration_view(request):
