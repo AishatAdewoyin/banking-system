@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.db import connections
+# from django.views.decorators.csrf import csrf_protect
 
 
 
@@ -26,7 +27,7 @@ def personal_registration_view(request):
         user_state = request.POST.get('state')
         user_zipcode = request.POST.get('zipcode')
 
-        new_user = User.objects.create_user(fullname, email, user_password, using='personalAccounts')
+        new_user = User.objects.create_user(fullname, email, user_password)
         new_user.user_address = user_address
         new_user.user_address2 = user_address2
         new_user.user_city = user_city
@@ -34,6 +35,7 @@ def personal_registration_view(request):
         new_user.user_zipcode = user_zipcode
 
         new_user.save(using='personalAccounts')
+        return redirect('authentication/customers-login/personal-login.html')
 
     return render(request, 'authentication/customers-reg/personal-reg.html')
 
