@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
+from .models import CustomUser
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.db import connections
+# from django.db import connections
 # from django.views.decorators.csrf import csrf_protect
 
 
@@ -13,8 +13,6 @@ from django.db import connections
 def index_view(request):
     # View function for the home page
     return render(request, 'index.html')
-
-from django.db import connections
 
 def personal_registration_view(request):
     if request.method == 'POST':
@@ -27,15 +25,15 @@ def personal_registration_view(request):
         user_state = request.POST.get('state')
         user_zipcode = request.POST.get('zipcode')
 
-        new_user = User.objects.create_user(fullname, email, user_password)
+        new_user = CustomUser.objects.create_user(fullname=fullname, email=email, password=user_password)
         new_user.user_address = user_address
         new_user.user_address2 = user_address2
         new_user.user_city = user_city
         new_user.user_state = user_state
         new_user.user_zipcode = user_zipcode
 
-        new_user.save(using='personalAccounts')
-        return redirect('authentication/customers-login/personal-login.html')
+        new_user.save()
+        return redirect('personal-login')
 
     return render(request, 'authentication/customers-reg/personal-reg.html')
 
