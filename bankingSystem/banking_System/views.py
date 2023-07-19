@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .models import CustomUser
+from .models import PersonalAccount
+from .models import BusinessAccount
+from .models import InvestorAccount
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 # from django.db import connections
 # from django.views.decorators.csrf import csrf_protect
-
-
-
 
 
 def index_view(request):
@@ -25,26 +24,74 @@ def personal_registration_view(request):
         user_state = request.POST.get('state')
         user_zipcode = request.POST.get('zipcode')
 
-        new_user = CustomUser.objects.create_user(fullname=fullname, email=email, password=user_password)
-        new_user.user_address = user_address
-        new_user.user_address2 = user_address2
-        new_user.user_city = user_city
-        new_user.user_state = user_state
-        new_user.user_zipcode = user_zipcode
+        new_user = PersonalAccount.objects.create(
+            fullname=fullname,
+            email=email,
+            user_password=user_password,
+            user_address=user_address,
+            user_address2=user_address2,
+            user_city=user_city,
+            user_state=user_state,
+            user_zipcode=user_zipcode
+        )
 
-        new_user.save()
         return redirect('personal-login')
 
     return render(request, 'authentication/customers-reg/personal-reg.html')
 
-
 def business_registration_view(request):
-    # View function for business account registration
+    if request.method == 'POST':
+        fullname = request.POST.get('fname')
+        email = request.POST.get('email')
+        user_password = request.POST.get('password')
+        user_address = request.POST.get('address')
+        user_address2 = request.POST.get('address2')
+        user_city = request.POST.get('city')
+        user_state = request.POST.get('state')
+        user_zipcode = request.POST.get('zipcode')
+
+        new_business = BusinessAccount.objects.create(
+            fullname=fullname,
+            email=email,
+            user_password=user_password,
+            user_address=user_address,
+            user_address2=user_address2,
+            user_city=user_city,
+            user_state=user_state,
+            user_zipcode=user_zipcode
+        )
+
+        return redirect('business-login')
+
     return render(request, 'authentication/customers-reg/business-reg.html')
 
+
 def investor_registration_view(request):
-    # View function for investor account registration
+    if request.method == 'POST':
+        fullname = request.POST.get('fname')
+        email = request.POST.get('email')
+        user_password = request.POST.get('password')
+        user_address = request.POST.get('address')
+        user_address2 = request.POST.get('address2')
+        user_city = request.POST.get('city')
+        user_state = request.POST.get('state')
+        user_zipcode = request.POST.get('zipcode')
+
+        new_investor = InvestorAccount.objects.create(
+            fullname=fullname,
+            email=email,
+            user_password=user_password,
+            user_address=user_address,
+            user_address2=user_address2,
+            user_city=user_city,
+            user_state=user_state,
+            user_zipcode=user_zipcode
+        )
+
+        return redirect('investor-login')
+
     return render(request, 'authentication/customers-reg/invest-reg.html')
+
 
 def personal_login_view(request):
     # View function for personal account login
