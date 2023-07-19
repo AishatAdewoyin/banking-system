@@ -6,7 +6,7 @@ from .models import InvestorAccount
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 # from django.db import connections
-# from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect
 
 
 def index_view(request):
