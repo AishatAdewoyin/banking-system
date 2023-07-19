@@ -1,5 +1,5 @@
 {% load static %}
-{% comment %} {% load csrf %} {% endcomment %}
+{% load csrf %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,7 +32,7 @@
     </header>
     <section class="container reg-form-section">
       <form class="row g-3 form-reg" action="" method="POST">
-        {% comment %} {% csrf_token %} {% endcomment %}
+        {% csrf_token %}
         <h2>Personal Account Registration Form</h2>
         <div class="col-md-12">
           <label for="full-name" class="form-label">Full Name:</label>
