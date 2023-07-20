@@ -100,15 +100,14 @@ def investor_registration_view(request):
 
 
             ########## AUTHENTICATION #########
-# PERSONAL ACCOUNT LOGIN
+# # PERSONAL ACCOUNT LOGIN
 def personal_login_view(request):
     if request.method == 'POST':
-        fullname = request.POST.get('fname')
         email = request.POST.get('email')
         user_password = request.POST.get('password')
 
         # Passing username and password as keyword arguments
-        user = authenticate(request, username=fullname, password=user_password)
+        user = authenticate(request, username=email, password=user_password)
 
         if user is not None:
             login(request, user)
@@ -117,6 +116,8 @@ def personal_login_view(request):
             return render(request, 'authentication/customers-login/personal-login.html', {'Error': 'User does not exist'})
 
     return render(request, 'authentication/customers-login/personal-login.html')
+
+
 
 def business_login_view(request):
     # View function for business account login
