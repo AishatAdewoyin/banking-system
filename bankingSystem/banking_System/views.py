@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 # from django.db import connections
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.hashers import make_password
 
 
 
@@ -27,10 +28,13 @@ def personal_registration_view(request):
         user_state = request.POST.get('state')
         user_zipcode = request.POST.get('zipcode')
 
+        # Hashing the passwords
+        hashed_password = make_password(user_password)
+
         new_user = PersonalAccount.objects.create(
             fullname=fullname,
             email=email,
-            user_password=user_password,
+            user_password=hashed_password,
             user_address=user_address,
             user_address2=user_address2,
             user_city=user_city,
@@ -41,6 +45,7 @@ def personal_registration_view(request):
         return redirect('personal-login')
 
     return render(request, 'authentication/customers-reg/personal-reg.html')
+
 
 # BUSINESS ACCOUNT REGISTRATION
 def business_registration_view(request):
@@ -53,6 +58,9 @@ def business_registration_view(request):
         user_city = request.POST.get('city')
         user_state = request.POST.get('state')
         user_zipcode = request.POST.get('zipcode')
+
+        # Hashing the passwords
+        hashed_password = make_password(user_password)
 
         new_business = BusinessAccount.objects.create(
             fullname=fullname,
@@ -81,6 +89,9 @@ def investor_registration_view(request):
         user_city = request.POST.get('city')
         user_state = request.POST.get('state')
         user_zipcode = request.POST.get('zipcode')
+
+        # Hashing the passwords
+        hashed_password = make_password(user_password)
 
         new_investor = InvestorAccount.objects.create(
             fullname=fullname,
@@ -112,6 +123,10 @@ def personal_login_view(request):
         if user is not None:
             login(request, user)
             return redirect('personal-dashboard')
+
+        # elif username is correct but the password is wrong 
+        # elif username is wrong but the password is correct 
+
         else:
             return render(request, 'authentication/customers-login/personal-login.html', {'Error': 'User does not exist'})
 
