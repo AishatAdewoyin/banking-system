@@ -29,24 +29,20 @@
         </nav>
     </header>
     <section class="container">
-        <form class="form-login" action="" method="">
+        <form class="form-login" action="{% url 'investor-login' %}" method="POST">
+            {% csrf_token %}
             <h2>Welcome Back!</h2>
             <div class="">
                 <div class="mb-3">
-                    <label for="investors-accName" class="form-label">Your Account Name:</label>
-                    <input type="text" class="form-control" id="investors-accName" required aria-describedby="accName">
-                    <div id="investors-accName" class="form-text">We'll never share your details with anyone else.</div>
+                    <label for="investor-email" class="form-label">Email address:</label>
+                    <input type="email" name="email" class="form-control" required id="investor-email" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <label for="investors-email" class="form-label">Email address:</label>
-                    <input type="email" class="form-control" required id="investors-email" aria-describedby="emailHelp">
+                    <label for="investor-password" class="form-label">Password:</label>
+                    <input type="password" name="password" class="form-control" required id="investor-password">
                 </div>
-                <div class="mb-3">
-                    <label for="investors-password" class="form-label">Password:</label>
-                    <input type="password" class="form-control"required  id="investors-password">
-                </div>
-                <div id="b-accName" class="form-link mb-2">Don't have an account? <a href="{% url 'personal-registration' %}" alt="go to personal registration page">Create Account Here</a></div>
-                <button type="submit" class="btn btn-danger" alt="reset">Forgot Password</button>
+                <div id="p-accName" class="form-link mb-2">Don't have an account? <a href="{% url 'investor-registration' %}" alt="go to investor registration page">Create Account Here</a></div>
+                <div id="p-accName" class="form-link mb-2">Forgot Password<a href="{% url 'Investors-password-reset' %}" alt="go to investors registration page">Create Account Here</a></div>
                 <button type="submit" class="btn btn-danger" alt="Login">Login</button>
             </div>
         </form>

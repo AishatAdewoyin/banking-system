@@ -21,7 +21,7 @@ urlpatterns = [
     path('single-personal-page/', views.single_personal_page_view, name='single-personal-page'),
     path('single-business-page/', views.single_business_page_view, name='single-business-page'),
     path('single-investor-page/', views.single_investor_page_view, name='single-investor-page'),
-    path('personal-dashboard/', views.personal_dashboard_view, 
+    path('personal-dashboard/', views.personal_dashboard_view,
     name='personal-dashboard'),
     path('business-dashboard/', views.business_dashboard_view, 
     name='business-dashboard'),

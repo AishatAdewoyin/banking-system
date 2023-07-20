@@ -9,10 +9,13 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 
 
+
+            ####### AUTHORISATION #######
+# THE MAIN PAGE
 def index_view(request):
-    # View function for the home page
     return render(request, 'index.html')
 
+# PERSONAL ACCOUNT REGISTRATION
 def personal_registration_view(request):
     if request.method == 'POST':
         fullname = request.POST.get('fname')
@@ -39,6 +42,7 @@ def personal_registration_view(request):
 
     return render(request, 'authentication/customers-reg/personal-reg.html')
 
+# BUSINESS ACCOUNT REGISTRATION
 def business_registration_view(request):
     if request.method == 'POST':
         fullname = request.POST.get('fname')
@@ -66,6 +70,7 @@ def business_registration_view(request):
     return render(request, 'authentication/customers-reg/business-reg.html')
 
 
+# INVESTORS ACCOUNT REGISTRATION
 def investor_registration_view(request):
     if request.method == 'POST':
         fullname = request.POST.get('fname')
@@ -93,8 +98,24 @@ def investor_registration_view(request):
     return render(request, 'authentication/customers-reg/invest-reg.html')
 
 
+
+            ########## AUTHENTICATION #########
+# PERSONAL ACCOUNT LOGIN
 def personal_login_view(request):
-    # View function for personal account login
+    if request.method == 'POST':
+        fullname = request.POST.get('fname')
+        email = request.POST.get('email')
+        user_password = request.POST.get('password')
+
+        # Pass username and password as keyword arguments
+        user = authenticate(request, username=fullname, password=user_password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('personal-dashboard')
+        else:
+            return render(request, 'authentication/customers-login/personal-login.html', {'Error': 'User does not exist'})
+
     return render(request, 'authentication/customers-login/personal-login.html')
 
 def business_login_view(request):
