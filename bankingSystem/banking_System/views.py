@@ -107,7 +107,7 @@ def personal_login_view(request):
         email = request.POST.get('email')
         user_password = request.POST.get('password')
 
-        # Pass username and password as keyword arguments
+        # Passing username and password as keyword arguments
         user = authenticate(request, username=fullname, password=user_password)
 
         if user is not None:
