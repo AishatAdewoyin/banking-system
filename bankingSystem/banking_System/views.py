@@ -1,22 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .models import PersonalAccount
-from .models import BusinessAccount
-from .models import InvestorAccount
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-# from django.db import connections
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.hashers import make_password
+from .models import PersonalAccount, BusinessAccount, InvestorAccount
 
 
+####### AUTHORISATION #######
 
-            ####### AUTHORISATION #######
 # THE MAIN PAGE
 def index_view(request):
     return render(request, 'index.html')
 
 # PERSONAL ACCOUNT REGISTRATION
+@csrf_protect
 def personal_registration_view(request):
     if request.method == 'POST':
         fullname = request.POST.get('fname')
@@ -28,7 +26,7 @@ def personal_registration_view(request):
         user_state = request.POST.get('state')
         user_zipcode = request.POST.get('zipcode')
 
-        # Hashing the passwords
+        # Hashing the password
         hashed_password = make_password(user_password)
 
         new_user = PersonalAccount.objects.create(
@@ -48,6 +46,7 @@ def personal_registration_view(request):
 
 
 # BUSINESS ACCOUNT REGISTRATION
+@csrf_protect
 def business_registration_view(request):
     if request.method == 'POST':
         fullname = request.POST.get('fname')
@@ -59,13 +58,13 @@ def business_registration_view(request):
         user_state = request.POST.get('state')
         user_zipcode = request.POST.get('zipcode')
 
-        # Hashing the passwords
+        # Hashing the password
         hashed_password = make_password(user_password)
 
         new_business = BusinessAccount.objects.create(
             fullname=fullname,
             email=email,
-            user_password=user_password,
+            user_password=hashed_password,
             user_address=user_address,
             user_address2=user_address2,
             user_city=user_city,
@@ -79,6 +78,7 @@ def business_registration_view(request):
 
 
 # INVESTORS ACCOUNT REGISTRATION
+@csrf_protect
 def investor_registration_view(request):
     if request.method == 'POST':
         fullname = request.POST.get('fname')
@@ -90,13 +90,13 @@ def investor_registration_view(request):
         user_state = request.POST.get('state')
         user_zipcode = request.POST.get('zipcode')
 
-        # Hashing the passwords
+        # Hashing the password
         hashed_password = make_password(user_password)
 
         new_investor = InvestorAccount.objects.create(
             fullname=fullname,
             email=email,
-            user_password=user_password,
+            user_password=hashed_password,
             user_address=user_address,
             user_address2=user_address2,
             user_city=user_city,
@@ -110,8 +110,10 @@ def investor_registration_view(request):
 
 
 
+
             ########## AUTHENTICATION #########
 # # PERSONAL ACCOUNT LOGIN
+@csrf_protect
 def personal_login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -133,15 +135,17 @@ def personal_login_view(request):
     return render(request, 'authentication/customers-login/personal-login.html')
 
 
-
+@csrf_protect
 def business_login_view(request):
     # View function for business account login
     return render(request, 'authentication/customers-login/business-login.html')
 
+@csrf_protect
 def investor_login_view(request):
     # View function for investor account login
     return render(request, 'authentication/customers-login/invest-login.html')
 
+@csrf_protect
 def admin_login_view(request):
     # View function for admin account login
     return render(request, 'authentication/admin/admin-login.html')
@@ -178,14 +182,17 @@ def investor_dashboard_view(request):
     # View function for investor dashboard page
     return render(request, 'authentication/customers-dashboard/investor-dashboard.html')
 
+@csrf_protect
 def personal_password_reset_view(request):
     # View function for password reset page
     return render(request, 'authentication/customers-reset-password/personal-password-reset.html')
 
+@csrf_protect
 def business_password_reset_view(request):
     # View function for business password reset page
     return render(request, 'authentication/customers-reset-password/business-password-reset.html')
 
+@csrf_protect
 def investors_password_reset_view(request):
     # View function for investors password reset page
     return render(request, 'authentication/customers-reset-password/investors-password-reset.html')
