@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
@@ -183,6 +184,7 @@ def investor_dashboard_view(request):
     return render(request, 'authentication/customers-dashboard/investor-dashboard.html')
 
 @csrf_protect
+@login_required
 def personal_password_reset_view(request):
     # View function for password reset page
     return render(request, 'authentication/customers-reset-password/personal-password-reset.html')
