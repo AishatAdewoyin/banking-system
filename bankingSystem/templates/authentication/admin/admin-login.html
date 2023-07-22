@@ -29,23 +29,22 @@
         </nav>
     </header>
     <section class="container">
-        <form class="form-login bg-secondary" action="" method="">
+        <form class="form-login bg-secondary" action="{% url 'admin-login' %}" method="POST">
+            {% csrf_token %}
             <h2>Admin Login!</h2>
             <div class="">
                 <div class="mb-3">
                     <label for="admin-email" class="form-label">Email address:</label>
-                    <input type="email" class="form-control" required id="admin-email" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" required id="admin-email" name="email" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                     <label for="admin-password" class="form-label">Password:</label>
-                    <input type="password" class="form-control"required  id="admin-password">
+                    <input type="password" class="form-control" required id="admin-password" name="password">
                 </div>
                 <button type="submit" class="btn btn-danger" alt="Login">Login</button>
             </div>
         </form>
-    </section>
-
-
+    </section>    
     <script src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'JS/register.js' %}"></script>
 </body>

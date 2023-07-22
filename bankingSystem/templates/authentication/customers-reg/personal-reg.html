@@ -30,7 +30,9 @@
       </nav>
     </header>
     <section class="container reg-form-section">
-      <form class="row g-3 form-reg" action="" method="POST">
+      <form class="row g-3 form-reg" action="{% url 'personal-registration' %" method="POST">
+        {% csrf_token %}
+        {{ form }}
         <h2>Personal Account Registration Form</h2>
         <div class="col-md-12">
           <label for="full-name" class="form-label">Full Name:</label>
