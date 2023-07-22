@@ -5,14 +5,16 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.hashers import make_password
-# from .models import CustomUserManager, PersonalAccount, BusinessAccount, InvestorAccount
+from django.contrib.auth import get_user_model
 
-
-####### AUTHORISATION #######
+# Get the custom User model
+UserModel = get_user_model()
 
 # THE MAIN PAGE
 def index_view(request):
     return render(request, 'index.html')
+
+# AUTHENTICATION
 
 # PERSONAL ACCOUNT REGISTRATION
 @csrf_protect
@@ -30,10 +32,12 @@ def personal_registration_view(request):
         # Hashing the password
         hashed_password = make_password(user_password)
 
-        new_user = PersonalAccount.objects.create(
-            fullname=fullname,
+        new_user = UserModel.objects.create_user(
+            username=email,
             email=email,
-            user_password=hashed_password,
+            password=hashed_password,
+            role=UserModel.Role.PERSONAL_ACCOUNTS,
+            fullname=fullname,
             user_address=user_address,
             user_address2=user_address2,
             user_city=user_city,
@@ -44,7 +48,6 @@ def personal_registration_view(request):
         return redirect('personal-login')
 
     return render(request, 'authentication/customers-reg/personal-reg.html')
-
 
 # BUSINESS ACCOUNT REGISTRATION
 @csrf_protect
@@ -62,10 +65,12 @@ def business_registration_view(request):
         # Hashing the password
         hashed_password = make_password(user_password)
 
-        new_business = BusinessAccount.objects.create(
-            fullname=fullname,
+        new_business = UserModel.objects.create_user(
+            username=email,
             email=email,
-            user_password=hashed_password,
+            password=hashed_password,
+            role=UserModel.Role.BUSINESS_ACCOUNTS,
+            fullname=fullname,
             user_address=user_address,
             user_address2=user_address2,
             user_city=user_city,
@@ -76,7 +81,6 @@ def business_registration_view(request):
         return redirect('business-login')
 
     return render(request, 'authentication/customers-reg/business-reg.html')
-
 
 # INVESTORS ACCOUNT REGISTRATION
 @csrf_protect
@@ -94,10 +98,12 @@ def investor_registration_view(request):
         # Hashing the password
         hashed_password = make_password(user_password)
 
-        new_investor = InvestorAccount.objects.create(
-            fullname=fullname,
+        new_investor = UserModel.objects.create_user(
+            username=email,
             email=email,
-            user_password=hashed_password,
+            password=hashed_password,
+            role=UserModel.Role.INVESTORS_ACCOUNTS,
+            fullname=fullname,
             user_address=user_address,
             user_address2=user_address2,
             user_city=user_city,
@@ -109,26 +115,87 @@ def investor_registration_view(request):
 
     return render(request, 'authentication/customers-reg/invest-reg.html')
 
+# ...
 
-
-
-            ########## AUTHENTICATION #########
-# # PERSONAL ACCOUNT LOGIN
+# PERSONAL ACCOUNT LOGIN
 @csrf_protect
 def personal_login_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        # Authenticating the user
+        user = authenticate(request, username=email, password=password)
+
+        if user and user.role == UserModel.Role.PERSONAL_ACCOUNTS:
+            # Logging the user in if authentication is successful and the user has the correct role
+            login(request, user)
+            return redirect('personal-dashboard')
+        else:
+            # Returning an error message if authentication fails or the user has the wrong role
+            error_message = "Invalid credentials or unauthorized role."
+            return render(request, 'authentication/customers-login/personal-login.html', {'error_message': error_message})
 
     return render(request, 'authentication/customers-login/personal-login.html')
 
-
+# BUSINESS ACCOUNT LOGIN
 @csrf_protect
 def business_login_view(request):
-    # View function for business account login
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        # Authenticating the user
+        user = authenticate(request, username=email, password=password)
+
+        if user and user.role == UserModel.Role.BUSINESS_ACCOUNTS:
+            # Logging the user in if authentication is successful and the user has the correct role
+            login(request, user)
+            return redirect('business-dashboard')
+        else:
+            # Returning an error message if authentication fails or the user has the wrong role
+            error_message = "Invalid credentials or unauthorized role."
+            return render(request, 'authentication/customers-login/business-login.html', {'error_message': error_message})
+
     return render(request, 'authentication/customers-login/business-login.html')
 
 @csrf_protect
 def investor_login_view(request):
     # View function for investor account login
     return render(request, 'authentication/customers-login/invest-login.html')
+
+
+# ADMIN ACCOUNT REGISTRATION
+@csrf_protect
+def admin_registration_view(request):
+    if request.method == 'POST':
+        fullname = request.POST.get('fname')
+        email = request.POST.get('email')
+        user_password = request.POST.get('password')
+        user_address = request.POST.get('address')
+        user_address2 = request.POST.get('address2')
+        user_city = request.POST.get('city')
+        user_state = request.POST.get('state')
+        user_zipcode = request.POST.get('zipcode')
+
+        # Hashing the password
+        hashed_password = make_password(user_password)
+
+        new_admin = UserModel.objects.create_user(
+            email=email,
+            password=hashed_password,
+            role=UserModel.Role.ADMIN,
+            fullname=fullname,
+            user_address=user_address,
+            user_address2=user_address2,
+            user_city=user_city,
+            user_state=user_state,
+            user_zipcode=user_zipcode
+        )
+
+        return redirect('admin-login')
+
+    return render(request, 'authentication/admin/admin-reg.html')
 
 @csrf_protect
 def admin_login_view(request):

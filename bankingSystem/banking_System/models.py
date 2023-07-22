@@ -1,19 +1,39 @@
-from django.contrib.auth.models import AbstractUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 
+class CustomUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
+        return self.create_user(email, password, **extra_fields)
+
 class User(AbstractUser):
-    # User model fields and methods go here
     class Role(models.TextChoices):
         ADMIN = "ADMIN", 'Admin'
         PERSONAL_ACCOUNTS = "PERSONALACCOUNTS", 'PersonalAccounts'
         BUSINESS_ACCOUNTS = "BUSINESSACCOUNTS", 'BusinessAccounts'
         INVESTORS_ACCOUNTS = "INVESTORSACCOUNTS", 'InvestorsAccounts'
-    class Meta:
-        swappable = 'AUTH_USER_MODEL'
 
     base_role = Role.ADMIN
 
     role = models.CharField(max_length=50, choices=Role.choices, default=base_role)
+
+    objects = CustomUserManager()
 
     def save(self, *args, **kwargs):
         if not self.pk:
@@ -21,63 +41,46 @@ class User(AbstractUser):
         return super().save(*args, **kwargs)
 
 
-# # personal accounts registration
+class PersonalAccount(User):
+    # Add other fields specific to PersonalAccount
+    fullname = models.CharField(max_length=255)
+    user_address = models.CharField(max_length=255)
+    user_address2 = models.CharField(max_length=255)
+    user_city = models.CharField(max_length=255)
+    user_state = models.CharField(max_length=255)
+    user_zipcode = models.CharField(max_length=10)
 
-# class PersonalAccount(models.Model):
-#     fullname = models.CharField(max_length=255)
-#     email = models.EmailField()
-#     user_password = models.CharField(max_length=255)
-#     user_address = models.CharField(max_length=255)
-#     user_address2 = models.CharField(max_length=255)
-#     user_city = models.CharField(max_length=255)
-#     user_state = models.CharField(max_length=255)
-#     user_zipcode = models.CharField(max_length=10)
-
-#     class Meta:
-#         db_table = 'personal_account_reg'
-
-
-# # business accounts registration
-
-# class BusinessAccount(models.Model):
-#     fullname = models.CharField(max_length=255)
-#     email = models.EmailField()
-#     user_password = models.CharField(max_length=255)
-#     user_address = models.CharField(max_length=255)
-#     user_address2 = models.CharField(max_length=255)
-#     user_city = models.CharField(max_length=255)
-#     user_state = models.CharField(max_length=255)
-#     user_zipcode = models.CharField(max_length=10)
-
-#     class Meta:
-#         db_table = 'business_account_reg'
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.role = self.Role.PERSONAL_ACCOUNTS
+        return super().save(*args, **kwargs)
 
 
-# # investors accounts registration
+class BusinessAccount(User):
+    # Add other fields specific to BusinessAccount
+    fullname = models.CharField(max_length=255)
+    user_address = models.CharField(max_length=255)
+    user_address2 = models.CharField(max_length=255)
+    user_city = models.CharField(max_length=255)
+    user_state = models.CharField(max_length=255)
+    user_zipcode = models.CharField(max_length=10)
 
-# class InvestorAccount(models.Model):
-#     fullname = models.CharField(max_length=255)
-#     email = models.EmailField()
-#     user_password = models.CharField(max_length=255)
-#     user_address = models.CharField(max_length=255)
-#     user_address2 = models.CharField(max_length=255)
-#     user_city = models.CharField(max_length=255)
-#     user_state = models.CharField(max_length=255)
-#     user_zipcode = models.CharField(max_length=10)
-
-#     class Meta:
-#         db_table = 'investors_account_reg'
-
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.role = self.Role.BUSINESS_ACCOUNTS
+        return super().save(*args, **kwargs)
 
 
+class InvestorAccount(User):
+    # Add other fields specific to InvestorAccount
+    fullname = models.CharField(max_length=255)
+    user_address = models.CharField(max_length=255)
+    user_address2 = models.CharField(max_length=255)
+    user_city = models.CharField(max_length=255)
+    user_state = models.CharField(max_length=255)
+    user_zipcode = models.CharField(max_length=10)
 
-# from django.db import models
-
-# class Account(models.Model):
-#     account_number = models.CharField(max_length=50)
-#     # Add other fields as needed
-
-# class Transaction(models.Model):
-#     account = models.ForeignKey(Account, on_delete=models.CASCADE)
-#     amount = models.DecimalField(max_digits=10, decimal_places=2)
-#     # Add other fields as needed
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.role = self.Role.INVESTORS_ACCOUNTS
+        return super().save(*args, **kwargs)
