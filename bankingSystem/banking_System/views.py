@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_protect
+# from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import get_user_model
 
@@ -17,7 +17,6 @@ def index_view(request):
 # AUTHENTICATION
 
 # PERSONAL ACCOUNT REGISTRATION
-@csrf_protect
 def personal_registration_view(request):
     if request.method == 'POST':
         fullname = request.POST.get('fname')
@@ -50,7 +49,6 @@ def personal_registration_view(request):
     return render(request, 'authentication/customers-reg/personal-reg.html')
 
 # BUSINESS ACCOUNT REGISTRATION
-@csrf_protect
 def business_registration_view(request):
     if request.method == 'POST':
         fullname = request.POST.get('fname')
@@ -83,7 +81,6 @@ def business_registration_view(request):
     return render(request, 'authentication/customers-reg/business-reg.html')
 
 # INVESTORS ACCOUNT REGISTRATION
-@csrf_protect
 def investor_registration_view(request):
     if request.method == 'POST':
         fullname = request.POST.get('fname')
@@ -118,7 +115,6 @@ def investor_registration_view(request):
 # ...
 
 # PERSONAL ACCOUNT LOGIN
-@csrf_protect
 def personal_login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -139,7 +135,6 @@ def personal_login_view(request):
     return render(request, 'authentication/customers-login/personal-login.html')
 
 # BUSINESS ACCOUNT LOGIN
-@csrf_protect
 def business_login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -159,14 +154,13 @@ def business_login_view(request):
 
     return render(request, 'authentication/customers-login/business-login.html')
 
-@csrf_protect
+
 def investor_login_view(request):
     # View function for investor account login
     return render(request, 'authentication/customers-login/invest-login.html')
 
 
 # ADMIN ACCOUNT REGISTRATION
-@csrf_protect
 def admin_registration_view(request):
     if request.method == 'POST':
         fullname = request.POST.get('fname')
@@ -197,7 +191,7 @@ def admin_registration_view(request):
 
     return render(request, 'authentication/admin/admin-reg.html')
 
-@csrf_protect
+
 def admin_login_view(request):
     # View function for admin account login
     return render(request, 'authentication/admin/admin-login.html')
@@ -234,18 +228,18 @@ def investor_dashboard_view(request):
     # View function for investor dashboard page
     return render(request, 'authentication/customers-dashboard/investor-dashboard.html')
 
-@csrf_protect
+
 @login_required
 def personal_password_reset_view(request):
     # View function for password reset page
     return render(request, 'authentication/customers-reset-password/personal-password-reset.html')
 
-@csrf_protect
+
 def business_password_reset_view(request):
     # View function for business password reset page
     return render(request, 'authentication/customers-reset-password/business-password-reset.html')
 
-@csrf_protect
+
 def investors_password_reset_view(request):
     # View function for investors password reset page
     return render(request, 'authentication/customers-reset-password/investors-password-reset.html')

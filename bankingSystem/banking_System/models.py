@@ -6,8 +6,26 @@ class CustomUserManager(BaseUserManager):
         if not email:
             raise ValueError('The Email field must be set')
         email = self.normalize_email(email)
+
+        # Extract the additional fields from extra_fields
+        fullname = extra_fields.pop('fullname', '')
+        user_address = extra_fields.pop('user_address', '')
+        user_address2 = extra_fields.pop('user_address2', '')
+        user_city = extra_fields.pop('user_city', '')
+        user_state = extra_fields.pop('user_state', '')
+        user_zipcode = extra_fields.pop('user_zipcode', '')
+
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
+        
+        # Set the additional fields
+        user.fullname = fullname
+        user.user_address = user_address
+        user.user_address2 = user_address2
+        user.user_city = user_city
+        user.user_state = user_state
+        user.user_zipcode = user_zipcode
+
         user.save(using=self._db)
         return user
 
