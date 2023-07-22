@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.hashers import make_password
-from .models import PersonalAccount, BusinessAccount, InvestorAccount
+# from .models import CustomUserManager, PersonalAccount, BusinessAccount, InvestorAccount
 
 
 ####### AUTHORISATION #######
@@ -116,22 +116,6 @@ def investor_registration_view(request):
 # # PERSONAL ACCOUNT LOGIN
 @csrf_protect
 def personal_login_view(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        user_password = request.POST.get('password')
-
-        # Passing username and password as keyword arguments
-        user = authenticate(request, username=email, password=user_password)
-
-        if user is not None:
-            login(request, user)
-            return redirect('personal-dashboard')
-
-        # elif username is correct but the password is wrong 
-        # elif username is wrong but the password is correct 
-
-        else:
-            return render(request, 'authentication/customers-login/personal-login.html', {'Error': 'User does not exist'})
 
     return render(request, 'authentication/customers-login/personal-login.html')
 
