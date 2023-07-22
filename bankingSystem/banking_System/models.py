@@ -3,33 +3,17 @@ from django.db import models
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
+        # Custom user manager for creating regular users
         if not email:
             raise ValueError('The Email field must be set')
         email = self.normalize_email(email)
-
-        # Extract the additional fields from extra_fields
-        fullname = extra_fields.pop('fullname', '')
-        user_address = extra_fields.pop('user_address', '')
-        user_address2 = extra_fields.pop('user_address2', '')
-        user_city = extra_fields.pop('user_city', '')
-        user_state = extra_fields.pop('user_state', '')
-        user_zipcode = extra_fields.pop('user_zipcode', '')
-
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
-        
-        # Set the additional fields
-        user.fullname = fullname
-        user.user_address = user_address
-        user.user_address2 = user_address2
-        user.user_city = user_city
-        user.user_state = user_state
-        user.user_zipcode = user_zipcode
-
         user.save(using=self._db)
         return user
 
     def create_superuser(self, email, password=None, **extra_fields):
+        # Custom user manager for creating superusers (admin)
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -41,26 +25,38 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 class User(AbstractUser):
+    # Custom user model extending AbstractUser
+    email = models.EmailField(unique=True)
+    fullname = models.CharField(max_length=255)
+    user_address = models.CharField(max_length=255)
+    user_address2 = models.CharField(max_length=255)
+    user_city = models.CharField(max_length=255)
+    user_state = models.CharField(max_length=255)
+    user_zipcode = models.CharField(max_length=10)
+
     class Role(models.TextChoices):
+        # Enum choices for user roles
         ADMIN = "ADMIN", 'Admin'
         PERSONAL_ACCOUNTS = "PERSONALACCOUNTS", 'PersonalAccounts'
         BUSINESS_ACCOUNTS = "BUSINESSACCOUNTS", 'BusinessAccounts'
         INVESTORS_ACCOUNTS = "INVESTORSACCOUNTS", 'InvestorsAccounts'
 
-    base_role = Role.ADMIN
-
-    role = models.CharField(max_length=50, choices=Role.choices, default=base_role)
+    role = models.CharField(max_length=20, choices=Role.choices, default=Role.ADMIN)
 
     objects = CustomUserManager()
 
     def save(self, *args, **kwargs):
+        # Set the default role for new users to ADMIN
         if not self.pk:
-            self.role = self.base_role
+            self.role = self.Role.ADMIN
         return super().save(*args, **kwargs)
 
+    def __str__(self):
+        return self.fullname
 
-class PersonalAccount(User):
-    # Add other fields specific to PersonalAccount
+class BusinessAccount(models.Model):
+    # Model for BusinessAccount with specific fields
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='business_account')
     fullname = models.CharField(max_length=255)
     user_address = models.CharField(max_length=255)
     user_address2 = models.CharField(max_length=255)
@@ -68,14 +64,9 @@ class PersonalAccount(User):
     user_state = models.CharField(max_length=255)
     user_zipcode = models.CharField(max_length=10)
 
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.role = self.Role.PERSONAL_ACCOUNTS
-        return super().save(*args, **kwargs)
-
-
-class BusinessAccount(User):
-    # Add other fields specific to BusinessAccount
+class PersonalAccount(models.Model):
+    # Model for PersonalAccount with specific fields
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='personal_account')
     fullname = models.CharField(max_length=255)
     user_address = models.CharField(max_length=255)
     user_address2 = models.CharField(max_length=255)
@@ -83,22 +74,12 @@ class BusinessAccount(User):
     user_state = models.CharField(max_length=255)
     user_zipcode = models.CharField(max_length=10)
 
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.role = self.Role.BUSINESS_ACCOUNTS
-        return super().save(*args, **kwargs)
-
-
-class InvestorAccount(User):
-    # Add other fields specific to InvestorAccount
+class InvestorAccount(models.Model):
+    # Model for InvestorAccount with specific fields
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='investor_account')
     fullname = models.CharField(max_length=255)
     user_address = models.CharField(max_length=255)
     user_address2 = models.CharField(max_length=255)
     user_city = models.CharField(max_length=255)
     user_state = models.CharField(max_length=255)
     user_zipcode = models.CharField(max_length=10)
-
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.role = self.Role.INVESTORS_ACCOUNTS
-        return super().save(*args, **kwargs)
