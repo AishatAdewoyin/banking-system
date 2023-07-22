@@ -2,13 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
-# from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth import get_user_model
-
-# Get the custom User model
-UserModel = get_user_model()
+from .models import PersonalAccount, BusinessAccount, InvestorAccount
 
 # THE MAIN PAGE
 def index_view(request):
@@ -31,11 +26,10 @@ def personal_registration_view(request):
         # Hashing the password
         hashed_password = make_password(user_password)
 
-        new_user = UserModel.objects.create_user(
+        new_personal = PersonalAccount.objects.create_user(
             username=email,
             email=email,
             password=hashed_password,
-            role=UserModel.Role.PERSONAL_ACCOUNTS,
             fullname=fullname,
             user_address=user_address,
             user_address2=user_address2,
@@ -63,11 +57,10 @@ def business_registration_view(request):
         # Hashing the password
         hashed_password = make_password(user_password)
 
-        new_business = UserModel.objects.create_user(
+        new_business = BusinessAccount.objects.create_user(
             username=email,
             email=email,
             password=hashed_password,
-            role=UserModel.Role.BUSINESS_ACCOUNTS,
             fullname=fullname,
             user_address=user_address,
             user_address2=user_address2,
@@ -95,11 +88,10 @@ def investor_registration_view(request):
         # Hashing the password
         hashed_password = make_password(user_password)
 
-        new_investor = UserModel.objects.create_user(
+        new_investor = InvestorAccount.objects.create_user(
             username=email,
             email=email,
             password=hashed_password,
-            role=UserModel.Role.INVESTORS_ACCOUNTS,
             fullname=fullname,
             user_address=user_address,
             user_address2=user_address2,
