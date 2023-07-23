@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from .models import User
-from .forms import AdminAccountRegistrationForm, PersonalAccountRegistrationForm, BusinessAccountRegistrationForm, InvestorAccountRegistrationForm
+from .forms import AdminAccountRegistrationForm, PersonalAccountRegistrationForm, BusinessAccountRegistrationForm, InvestorAccountRegistrationForm, AdminAccountLoginForm, PersonalAccountLoginForm, BusinessAccountLoginForm, InvestorsAccountLoginForm
 
 
 # THE MAIN PAGE
@@ -73,18 +73,21 @@ def investor_registration_view(request):
 
 # PERSONAL LOGIN
 def personal_login_view(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
+    context={}
+    if request.POST:
+        form=PersonalAccountLoginForm(request.POST)
+        if form.is_valid():
+            email=request.POST['email']
+            fullname=request.POST['fullname']
+            password=request.POST['password']
+            user=authenticate(request, email=email, fullname=fullname, password=password)
 
-        if user and user.role == User.Role.PERSONAL_ACCOUNTS:
-            login(request, user)
-            return redirect('personal-dashboard')
-        else:
-            error_message = "Invalid credentials or unauthorized role."
-            return render(request, 'authentication/customers-login/personal-login.html', {'error_message': error_message})
-
+            if user is not None:
+                login(request, user)
+                return redirect('personal-dashboard')
+    else:
+        form=PersonalAccountLoginForm()
+        context['personal_login_form']=form
     return render(request, 'authentication/customers-login/personal-login.html')
 
 # BUSINESS ACCOUNT LOGIN
@@ -100,6 +103,7 @@ def business_login_view(request):
         else:
             error_message = "Invalid credentials or unauthorized role."
             return render(request, 'authentication/customers-login/business-login.html', {'error_message': error_message})
+
 
     return render(request, 'authentication/customers-login/business-login.html')
 
