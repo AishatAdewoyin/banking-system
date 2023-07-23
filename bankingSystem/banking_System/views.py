@@ -2,76 +2,86 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
-from .models import PersonalAccount, BusinessAccount, InvestorAccount, User
-from .forms import PersonalAccountRegistrationForm, BusinessAccountRegistrationForm, InvestorAccountRegistrationForm, AdminAccountRegistrationForm
+from .models import User
+from .forms import AdminAccountRegistrationForm, PersonalAccountRegistrationForm, BusinessAccountRegistrationForm, InvestorAccountRegistrationForm
 
 
 # THE MAIN PAGE
 def index_view(request):
     return render(request, 'index.html')
 
+# ADMIN ACCOUNT REGISTRATION
+def admin_registration_view(request):
+    context={}
+    if request.method == 'POST':
+        form = AdminAccountRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('admin-login')  # Redirect to admin login after registration
+        context['admin_registration']=form
+    else:
+        form = AdminAccountRegistrationForm()
+        context['admin_registration']=form
+
+    return render(request, 'authentication/customers-reg/admin-reg.html', context)
+
 # PERSONAL ACCOUNT REGISTRATION
 def personal_registration_view(request):
+    context={}
     if request.method == 'POST':
         form = PersonalAccountRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
-            user.save()
-            return redirect('personal-login')
-
+            form.save()
+            return redirect('personal-login')  # Redirect to personal login after registration
+        context['personal_account_registration']=form
     else:
         form = PersonalAccountRegistrationForm()
-
-    return render(request, 'authentication/customers-reg/personal-reg.html', {'form': form})
+        context['personal_account_registration']=form
+       
+    return render(request, 'authentication/customers-reg/personal-reg.html', context)
 
 # BUSINESS ACCOUNT REGISTRATION
 def business_registration_view(request):
+    context={}
     if request.method == 'POST':
         form = BusinessAccountRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
-            user.save()
-            return redirect('business-login')
-
+            form.save()
+            return redirect('business-login')  # Redirect to personal login after registration
+        context['business_account_registration']=form
     else:
         form = BusinessAccountRegistrationForm()
+        context['business_account_registration']=form
 
-    return render(request, 'authentication/customers-reg/business-reg.html', {'form': form})
+    return render(request, 'authentication/customers-reg/business-reg.html', context)
+
 
 # INVESTORS ACCOUNT REGISTRATION
 def investor_registration_view(request):
+    context={}
     if request.method == 'POST':
         form = InvestorAccountRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
-            user.save()
-            return redirect('investor-login')
-
+            form.save()
+            return redirect('investor-login')  # Redirect to investor login after registration
+        context['investors_account_registration']=form
     else:
         form = InvestorAccountRegistrationForm()
+        context['investors_account_registration']=form
 
-    return render(request, 'authentication/customers-reg/invest-reg.html', {'form': form})
+    return render(request, 'authentication/customers-reg/investor-reg.html', context)
 
-# ...
-
-# PERSONAL ACCOUNT LOGIN
+# PERSONAL LOGIN
 def personal_login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
 
-        # Authenticating the user
-        user = authenticate(request, username=email, password=password)
-
-        if user and user.role == UserModel.Role.PERSONAL_ACCOUNTS:
-            # Logging the user in if authentication is successful and the user has the correct role
+        if user and user.role == User.Role.PERSONAL_ACCOUNTS:
             login(request, user)
             return redirect('personal-dashboard')
         else:
-            # Returning an error message if authentication fails or the user has the wrong role
             error_message = "Invalid credentials or unauthorized role."
             return render(request, 'authentication/customers-login/personal-login.html', {'error_message': error_message})
 
@@ -82,85 +92,53 @@ def business_login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
 
-        # Authenticating the user
-        user = authenticate(request, username=email, password=password)
-
-        if user and user.role == UserModel.Role.BUSINESS_ACCOUNTS:
-            # Logging the user in if authentication is successful and the user has the correct role
+        if user and user.role == User.Role.BUSINESS_ACCOUNTS:
             login(request, user)
             return redirect('business-dashboard')
         else:
-            # Returning an error message if authentication fails or the user has the wrong role
             error_message = "Invalid credentials or unauthorized role."
             return render(request, 'authentication/customers-login/business-login.html', {'error_message': error_message})
 
     return render(request, 'authentication/customers-login/business-login.html')
 
-# ...
-
+# INVESTORS ACCOUNT LOGIN
 def investor_login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
 
-        # Authenticating the user
-        user = authenticate(request, username=email, password=password)
-
-        if user and user.role == UserModel.Role.INVESTORS_ACCOUNTS:
-            # Logging the user in if authentication is successful and the user has the correct role
+        if user and user.role == User.Role.BUSINESS_ACCOUNTS:
             login(request, user)
             return redirect('investor-dashboard')
         else:
-            # Returning an error message if authentication fails or the user has the wrong role
             error_message = "Invalid credentials or unauthorized role."
-            return render(request, 'authentication/customers-login/invest-login.html', {'error_message': error_message})
+            return render(request, 'authentication/customers-login/investor-login.html', {'error_message': error_message})
 
-    return render(request, 'authentication/customers-login/invest-login.html')
-
-
-# ADMIN ACCOUNT REGISTRATION
-def admin_registration_view(request):
-    if request.method == 'POST':
-        form = AdminAccountRegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
-            user.save()
-            return redirect('admin-login')
-
-    else:
-        form = AdminAccountRegistrationForm()
-
-    return render(request, 'authentication/customers-reg/admin-reg.html', {'form': form})
-
-
+    return render(request, 'authentication/customers-login/investor-login.html')
 
 # ADMIN ACCOUNT LOGIN
 def admin_login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
 
-        # Authenticating the user
-        user = authenticate(request, username=email, password=password)
-
-        if user and user.role == UserModel.Role.INVESTORS_ACCOUNTS:
-            # Logging the user in if authentication is successful and the user has the correct role
+        if user and user.role == User.Role.ADMIN:
             login(request, user)
-            return redirect('admin-dashboard')
+            return redirect('admin-mainpage')
         else:
-            # Returning an error message if authentication fails or the user has the wrong role
             error_message = "Invalid credentials or unauthorized role."
-            return render(request, 'authentication/customers-login/admin-login.html', {'error_message': error_message})
+            return render(request, 'authentication/admin/admin-login.html', {'error_message': error_message})
 
     return render(request, 'authentication/admin/admin-login.html')
 
 
-
 def admin_mainpage_view(request):
     # View function for admin homepage
-    return render(request, 'authentication/admin/admin-home.html')
+    return render(request, 'authentication/admin/admin-mainpage.html')
 
 def customers_list_view(request):
     # View function for customers list

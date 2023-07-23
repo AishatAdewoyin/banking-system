@@ -1,9 +1,7 @@
-from django.contrib import admin
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.index_view, name='index'),
     path('personal-registration/', views.personal_registration_view, name='personal-registration'),
     path('business-registration/', views.business_registration_view, name='business-registration'),
@@ -31,7 +29,10 @@ urlpatterns = [
     name='business-dashboard'),
     path('investor-dashboard/', views.investor_dashboard_view, 
     name='investor-dashboard'),
-    path('personal-password-reset/', views.personal_password_reset_view, name='personal-password-reset'),
-    path('business-password-reset/', views.business_password_reset_view, name='business-password-reset'),
-    path('investors-password-reset/', views.investors_password_reset_view, name='investors-password-reset'),
+    path('personal-password-reset/', views.personal_password_reset_view, 
+    name='personal-password-reset'),
+    path('business-password-reset/', views.business_password_reset_view, 
+    name='business-password-reset'),
+    path('investors-password-reset/', views.investors_password_reset_view, 
+    name='investors-password-reset'),
 ]
