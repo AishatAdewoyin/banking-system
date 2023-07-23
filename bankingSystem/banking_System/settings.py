@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'banking_system',
-    # Add your other apps here
 ]
 
 MIDDLEWARE = [
@@ -36,6 +35,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'banking_system.urls'
+
 
 TEMPLATES = [
     {
@@ -53,10 +53,12 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'banking_system.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
 
 DATABASES = {
     'default': {
@@ -67,6 +69,9 @@ DATABASES = {
         'PORT': '5432',
     },
 }
+
+
+AUTH_USER_MODEL = 'banking_system.User'
 
 
 # Password validation
@@ -93,7 +98,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -111,7 +115,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Default primary key field type

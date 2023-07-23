@@ -1,138 +1,148 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from .models import PersonalAccount
-from .models import BusinessAccount
-from .models import InvestorAccount
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-# from django.db import connections
-from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.hashers import make_password
+from .models import User
+from .forms import AdminAccountRegistrationForm, PersonalAccountRegistrationForm, BusinessAccountRegistrationForm, InvestorAccountRegistrationForm, AdminAccountLoginForm, PersonalAccountLoginForm, BusinessAccountLoginForm, InvestorsAccountLoginForm
 
 
-
-            ####### AUTHORISATION #######
 # THE MAIN PAGE
 def index_view(request):
     return render(request, 'index.html')
 
+# ADMIN ACCOUNT REGISTRATION
+def admin_registration_view(request):
+    context={}
+    if request.method == 'POST':
+        form = AdminAccountRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('admin-login')  # Redirect to admin login after registration
+        context['admin_registration']=form
+    else:
+        form = AdminAccountRegistrationForm()
+        context['admin_registration']=form
+
+    return render(request, 'authentication/customers-reg/admin-reg.html', context)
+
 # PERSONAL ACCOUNT REGISTRATION
 def personal_registration_view(request):
+    context={}
     if request.method == 'POST':
-        fullname = request.POST.get('fname')
-        email = request.POST.get('email')
-        user_password = request.POST.get('password')
-        user_address = request.POST.get('address')
-        user_address2 = request.POST.get('address2')
-        user_city = request.POST.get('city')
-        user_state = request.POST.get('state')
-        user_zipcode = request.POST.get('zipcode')
-
-        new_user = PersonalAccount.objects.create(
-            fullname=fullname,
-            email=email,
-            user_password=user_password,
-            user_address=user_address,
-            user_address2=user_address2,
-            user_city=user_city,
-            user_state=user_state,
-            user_zipcode=user_zipcode
-        )
-
-        return redirect('personal-login')
-
-    return render(request, 'authentication/customers-reg/personal-reg.html')
+        form = PersonalAccountRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('personal-login')  # Redirect to personal login after registration
+        context['personal_account_registration']=form
+    else:
+        form = PersonalAccountRegistrationForm()
+        context['personal_account_registration']=form
+       
+    return render(request, 'authentication/customers-reg/personal-reg.html', context)
 
 # BUSINESS ACCOUNT REGISTRATION
 def business_registration_view(request):
+    context={}
     if request.method == 'POST':
-        fullname = request.POST.get('fname')
-        email = request.POST.get('email')
-        user_password = request.POST.get('password')
-        user_address = request.POST.get('address')
-        user_address2 = request.POST.get('address2')
-        user_city = request.POST.get('city')
-        user_state = request.POST.get('state')
-        user_zipcode = request.POST.get('zipcode')
+        form = BusinessAccountRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('business-login')  # Redirect to personal login after registration
+        context['business_account_registration']=form
+    else:
+        form = BusinessAccountRegistrationForm()
+        context['business_account_registration']=form
 
-        new_business = BusinessAccount.objects.create(
-            fullname=fullname,
-            email=email,
-            user_password=user_password,
-            user_address=user_address,
-            user_address2=user_address2,
-            user_city=user_city,
-            user_state=user_state,
-            user_zipcode=user_zipcode
-        )
-
-        return redirect('business-login')
-
-    return render(request, 'authentication/customers-reg/business-reg.html')
+    return render(request, 'authentication/customers-reg/business-reg.html', context)
 
 
 # INVESTORS ACCOUNT REGISTRATION
 def investor_registration_view(request):
+    context={}
     if request.method == 'POST':
-        fullname = request.POST.get('fname')
-        email = request.POST.get('email')
-        user_password = request.POST.get('password')
-        user_address = request.POST.get('address')
-        user_address2 = request.POST.get('address2')
-        user_city = request.POST.get('city')
-        user_state = request.POST.get('state')
-        user_zipcode = request.POST.get('zipcode')
+        form = InvestorAccountRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('investor-login')  # Redirect to investor login after registration
+        context['investors_account_registration']=form
+    else:
+        form = InvestorAccountRegistrationForm()
+        context['investors_account_registration']=form
 
-        new_investor = InvestorAccount.objects.create(
-            fullname=fullname,
-            email=email,
-            user_password=user_password,
-            user_address=user_address,
-            user_address2=user_address2,
-            user_city=user_city,
-            user_state=user_state,
-            user_zipcode=user_zipcode
-        )
+    return render(request, 'authentication/customers-reg/investor-reg.html', context)
 
-        return redirect('investor-login')
-
-    return render(request, 'authentication/customers-reg/invest-reg.html')
-
-
-
-            ########## AUTHENTICATION #########
-# PERSONAL ACCOUNT LOGIN
+# PERSONAL LOGIN
 def personal_login_view(request):
-    if request.method == 'POST':
-        fullname = request.POST.get('fname')
-        email = request.POST.get('email')
-        user_password = request.POST.get('password')
+    context={}
+    if request.POST:
+        form=PersonalAccountLoginForm(request.POST)
+        if form.is_valid():
+            email=request.POST['email']
+            fullname=request.POST['fullname']
+            password=request.POST['password']
+            user=authenticate(request, email=email, fullname=fullname, password=password)
 
-        # Pass username and password as keyword arguments
-        user = authenticate(request, username=fullname, password=user_password)
-
-        if user is not None:
-            login(request, user)
-            return redirect('personal-dashboard')
-        else:
-            return render(request, 'authentication/customers-login/personal-login.html', {'Error': 'User does not exist'})
-
+            if user is not None:
+                login(request, user)
+                return redirect('personal-dashboard')
+    else:
+        form=PersonalAccountLoginForm()
+        context['personal_login_form']=form
     return render(request, 'authentication/customers-login/personal-login.html')
 
+# BUSINESS ACCOUNT LOGIN
 def business_login_view(request):
-    # View function for business account login
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
+
+        if user and user.role == User.Role.BUSINESS_ACCOUNTS:
+            login(request, user)
+            return redirect('business-dashboard')
+        else:
+            error_message = "Invalid credentials or unauthorized role."
+            return render(request, 'authentication/customers-login/business-login.html', {'error_message': error_message})
+
+
     return render(request, 'authentication/customers-login/business-login.html')
 
+# INVESTORS ACCOUNT LOGIN
 def investor_login_view(request):
-    # View function for investor account login
-    return render(request, 'authentication/customers-login/invest-login.html')
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
 
+        if user and user.role == User.Role.BUSINESS_ACCOUNTS:
+            login(request, user)
+            return redirect('investor-dashboard')
+        else:
+            error_message = "Invalid credentials or unauthorized role."
+            return render(request, 'authentication/customers-login/investor-login.html', {'error_message': error_message})
+
+    return render(request, 'authentication/customers-login/investor-login.html')
+
+# ADMIN ACCOUNT LOGIN
 def admin_login_view(request):
-    # View function for admin account login
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
+
+        if user and user.role == User.Role.ADMIN:
+            login(request, user)
+            return redirect('admin-mainpage')
+        else:
+            error_message = "Invalid credentials or unauthorized role."
+            return render(request, 'authentication/admin/admin-login.html', {'error_message': error_message})
+
     return render(request, 'authentication/admin/admin-login.html')
+
 
 def admin_mainpage_view(request):
     # View function for admin homepage
-    return render(request, 'authentication/admin/admin-home.html')
+    return render(request, 'authentication/admin/admin-mainpage.html')
 
 def customers_list_view(request):
     # View function for customers list
@@ -162,13 +172,17 @@ def investor_dashboard_view(request):
     # View function for investor dashboard page
     return render(request, 'authentication/customers-dashboard/investor-dashboard.html')
 
+
+@login_required
 def personal_password_reset_view(request):
     # View function for password reset page
     return render(request, 'authentication/customers-reset-password/personal-password-reset.html')
 
+
 def business_password_reset_view(request):
     # View function for business password reset page
     return render(request, 'authentication/customers-reset-password/business-password-reset.html')
+
 
 def investors_password_reset_view(request):
     # View function for investors password reset page
