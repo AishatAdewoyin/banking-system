@@ -33,6 +33,11 @@
             {% csrf_token %}
             <h2>Personal Account Registration Form</h2>
             {{ registration_form }}
+
+
+            {% for error in registration_form.errors %}
+                <p style="color: red;">{{error}}</p>
+                {% endfor %}
             <div id="i-accName" class="form-link mb-2">Already have an account? <a href="{% url 'personal-login' %}" alt="link to business login page">Login Here</a></div>
             <div class="col-12">
                 <button type="submit" class="btn btn-danger" alt="create a business account">Create an Account</button>

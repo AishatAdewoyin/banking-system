@@ -42,6 +42,11 @@
                 <span>{{ registration_form.password2.label }}</span>
                 <p>{{ registration_form.password2 }}</p>
 
+
+                {% for error in registration_form.errors %}
+                <p style="color: red;">{{error}}</p>
+                {% endfor %}
+
                 <div id="p-accName" class="form-link mb-2">Already have an account<a href="{% url 'admin-login' %}" alt="go to admin login page">Login Here</a></div>
                 <button type="submit" class="btn btn-danger" alt="Register">Register</button>
             </div>
