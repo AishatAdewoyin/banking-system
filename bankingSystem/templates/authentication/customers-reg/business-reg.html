@@ -28,7 +28,7 @@
         </nav>
     </header>
     <section class="container reg-form-section">
-        <form class="row g-3 form-reg" action="{% url 'business-registration' %}" method="POST">
+        <form class="row g-3 form-reg" action="{% url 'business-login' %}" method="POST">
             {% csrf_token %}
             <h2>Business Account Registration Form</h2>
             <div class="col-md-12">
@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-6">
                 <label for="reg-password" class="form-label">Password:</label>
-                <input type="password" name="password" placeholder="Abc123@# (Letters,Numbers, and symbols required. Not more then 18 characters)" required class="form-control" maxlength="18" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" id="reg-password">
+                <input type="password" name="password" placeholder="Abc123@# (Letters,Numbers, and symbols required. Not more then 18 characters)" required class="form-control" maxlength="18" id="reg-password">
             </div>
             <div class="col-12">
                 <label for="reg-address" class="form-label">Business Address:</label>

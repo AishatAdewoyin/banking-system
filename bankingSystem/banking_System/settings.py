@@ -71,7 +71,7 @@ DATABASES = {
 }
 
 
-AUTH_USER_MODEL = 'banking_system.User'
+AUTH_USER_MODEL = 'banking_system.NewUser'
 
 
 # Password validation
