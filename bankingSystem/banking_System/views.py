@@ -3,92 +3,120 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from .models import User
-from .forms import AdminAccountRegistrationForm, PersonalAccountRegistrationForm, BusinessAccountRegistrationForm, InvestorAccountRegistrationForm, AdminAccountLoginForm, PersonalAccountLoginForm, BusinessAccountLoginForm, InvestorsAccountLoginForm
+from .forms import (
+    AdminAccountRegistrationForm,
+    PersonalAccountRegistrationForm, 
+    BusinessAccountRegistrationForm, 
+    InvestorAccountRegistrationForm, 
+    AdminAccountLoginForm, 
+    PersonalAccountLoginForm, 
+    BusinessAccountLoginForm, 
+    InvestorsAccountLoginForm
+)
 
 
 # THE MAIN PAGE
 def index_view(request):
     return render(request, 'index.html')
 
-# ADMIN ACCOUNT REGISTRATION
-def admin_registration_view(request):
-    context={}
+
+# GENERAL ACCOUNT REGISTRATION LOGIC
+def register_account(request, form_class, template_name, login_url):
+    context = {}
+
+    # Custom view based on user type
+    if request.user.is_authenticated:
+        if request.user.is_personal_user():
+            # Handle the request for a personal user.
+            return render(request, 'personal_dashboard.html')
+
+        elif request.user.is_business_user():
+            # Handle the request for a business user.
+            return render(request, 'business_dashboard.html')
+
+        elif request.user.is_investor_user():
+            # Handle the request for an investor.
+            return render(request, 'investor_dashboard.html')
+
+    # Continue with the registration logic
     if request.method == 'POST':
-        form = AdminAccountRegistrationForm(request.POST)
+        form = form_class(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('admin-login')  # Redirect to admin login after registration
-        context['admin_registration']=form
+            return redirect(login_url)  # Redirect to the login page after registration
     else:
-        form = AdminAccountRegistrationForm()
-        context['admin_registration']=form
+        form = form_class()
+    context['registration_form'] = form
+    return render(request, template_name, context)
 
-    return render(request, 'authentication/customers-reg/admin-reg.html', context)
+# ADMIN ACCOUNT REGISTRATION
+def admin_registration_view(request):
+    return register_account(
+        request,
+        AdminAccountRegistrationForm,
+        'authentication/admin/admin-reg.html',
+        'admin-login'
+    )
 
 # PERSONAL ACCOUNT REGISTRATION
 def personal_registration_view(request):
-    context={}
-    if request.method == 'POST':
-        form = PersonalAccountRegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('personal-login')  # Redirect to personal login after registration
-        context['personal_account_registration']=form
-    else:
-        form = PersonalAccountRegistrationForm()
-        context['personal_account_registration']=form
-       
-    return render(request, 'authentication/customers-reg/personal-reg.html', context)
+    return register_account(
+        request,
+        PersonalAccountRegistrationForm,
+        'authentication/customers-reg/personal-reg.html',
+        'personal-login'
+    )
 
 # BUSINESS ACCOUNT REGISTRATION
 def business_registration_view(request):
-    context={}
-    if request.method == 'POST':
-        form = BusinessAccountRegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('business-login')  # Redirect to personal login after registration
-        context['business_account_registration']=form
-    else:
-        form = BusinessAccountRegistrationForm()
-        context['business_account_registration']=form
-
-    return render(request, 'authentication/customers-reg/business-reg.html', context)
-
+    return register_account(
+        request,
+        BusinessAccountRegistrationForm,
+        'authentication/customers-reg/business-reg.html',
+        'business-login'
+    )
 
 # INVESTORS ACCOUNT REGISTRATION
 def investor_registration_view(request):
-    context={}
-    if request.method == 'POST':
-        form = InvestorAccountRegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('investor-login')  # Redirect to investor login after registration
-        context['investors_account_registration']=form
-    else:
-        form = InvestorAccountRegistrationForm()
-        context['investors_account_registration']=form
+    return register_account(
+        request,
+        InvestorAccountRegistrationForm,
+        'authentication/customers-reg/investor-reg.html',
+        'investor-login'
+    )
 
-    return render(request, 'authentication/customers-reg/investor-reg.html', context)
+# Example of using login_required decorator
+# @login_required
+# def restricted_view(request):
+#     return render(request, 'restricted.html')
+
 
 # PERSONAL LOGIN
 def personal_login_view(request):
-    context={}
-    if request.POST:
-        form=PersonalAccountLoginForm(request.POST)
+    context = {}
+    if request.method == 'POST':
+        form = PersonalAccountLoginForm(request.POST)
         if form.is_valid():
-            email=request.POST['email']
-            fullname=request.POST['fullname']
-            password=request.POST['password']
-            user=authenticate(request, email=email, fullname=fullname, password=password)
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+
+            # Authenticate the user using email as the username
+            user = authenticate(request, username=email, password=password)
 
             if user is not None:
+                # Login the user and redirect to the personal dashboard
                 login(request, user)
                 return redirect('personal-dashboard')
+            else:
+                # Authentication failed, show an error message to the user
+                context['error_message'] = 'Invalid email or password'
+
     else:
-        form=PersonalAccountLoginForm()
-        context['personal_login_form']=form
-    return render(request, 'authentication/customers-login/personal-login.html')
+        form = PersonalAccountLoginForm()
+    context['personal_login_form'] = form
+
+    return render(request, 'authentication/customers-login/personal-login.html', context)
+
 
 # BUSINESS ACCOUNT LOGIN
 def business_login_view(request):
