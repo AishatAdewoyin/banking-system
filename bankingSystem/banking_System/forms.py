@@ -1,26 +1,26 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
-from .models import User
+from .models import NewUser
 
 # Admin
 class AdminAccountRegistrationForm(UserCreationForm):
     # Form for Admin account registration
     class Meta:
-        model = User
+        model = NewUser
         fields = ['email', 'fullname', 'password1', 'password2']
 
 # Personal
 class PersonalAccountRegistrationForm(UserCreationForm):
     class Meta:
-        model = User
+        model = NewUser
         fields = ['email', 'fullname', 'user_address', 'user_address2', 'password1', 'password2','user_city', 'user_state', 'user_zipcode']
 
 # Business
 class BusinessAccountRegistrationForm(UserCreationForm):
     # Form for Business account registration
     class Meta:
-        model = User
+        model = NewUser
         fields = ['email', 'fullname', 'user_address', 'user_address2', 'password1', 'password2','user_city', 'user_state', 'user_zipcode']
 
 # Investor
@@ -28,7 +28,7 @@ class InvestorAccountRegistrationForm(UserCreationForm):
     # Form for Investor account registration
 
     class Meta:
-        model = User
+        model = NewUser
         fields = ['email', 'fullname', 'user_address', 'user_address2', 'password1', 'password2','user_city', 'user_state', 'user_zipcode']
 
 
@@ -37,7 +37,7 @@ class InvestorAccountRegistrationForm(UserCreationForm):
 class AdminAccountLoginForm(forms.ModelForm):
     password=forms.CharField(label='Password', widget=forms.PasswordInput)
     class Meta:
-        model = User
+        model = NewUser
         fields = ('email', 'password')
 
     def clean(self):
@@ -52,7 +52,7 @@ class AdminAccountLoginForm(forms.ModelForm):
 class PersonalAccountLoginForm(forms.ModelForm):
     password=forms.CharField(label='Password', widget=forms.PasswordInput)
     class Meta:
-        model = User
+        model = NewUser
         fields = ('email', 'fullname', 'password')
 
     def clean(self):
@@ -69,7 +69,7 @@ class PersonalAccountLoginForm(forms.ModelForm):
 class BusinessAccountLoginForm(forms.ModelForm):
     password=forms.CharField(label='Password', widget=forms.PasswordInput)
     class Meta:
-        model = User
+        model = NewUser
         fields = ('email', 'fullname', 'password')
 
     def clean(self):
@@ -86,7 +86,7 @@ class BusinessAccountLoginForm(forms.ModelForm):
 class InvestorsAccountLoginForm(forms.ModelForm):
     password=forms.CharField(label='Password', widget=forms.PasswordInput)
     class Meta:
-        model = User
+        model = NewUser
         fields = ('email', 'fullname', 'password')
 
     def clean(self):

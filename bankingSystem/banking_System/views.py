@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
-from .models import User
+from .models import NewUser
 from .forms import (
     AdminAccountRegistrationForm,
     PersonalAccountRegistrationForm, 
@@ -18,7 +18,6 @@ from .forms import (
 # THE MAIN PAGE
 def index_view(request):
     return render(request, 'index.html')
-
 
 # GENERAL ACCOUNT REGISTRATION LOGIC
 def register_account(request, form_class, template_name, login_url):
@@ -85,10 +84,11 @@ def investor_registration_view(request):
         'investor-login'
     )
 
-# Example of using login_required decorator
+# # Example of using login_required decorator
 # @login_required
 # def restricted_view(request):
 #     return render(request, 'restricted.html')
+
 
 
 # PERSONAL LOGIN
@@ -100,11 +100,11 @@ def personal_login_view(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
 
-            # Authenticate the user using email as the username
+            # Authenticating the user using email as the username
             user = authenticate(request, username=email, password=password)
 
             if user is not None:
-                # Login the user and redirect to the personal dashboard
+                # Login the user in and redirecting to the personal dashboard
                 login(request, user)
                 return redirect('personal-dashboard')
             else:
@@ -120,50 +120,16 @@ def personal_login_view(request):
 
 # BUSINESS ACCOUNT LOGIN
 def business_login_view(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
-
-        if user and user.role == User.Role.BUSINESS_ACCOUNTS:
-            login(request, user)
-            return redirect('business-dashboard')
-        else:
-            error_message = "Invalid credentials or unauthorized role."
-            return render(request, 'authentication/customers-login/business-login.html', {'error_message': error_message})
-
-
+    
     return render(request, 'authentication/customers-login/business-login.html')
 
 # INVESTORS ACCOUNT LOGIN
 def investor_login_view(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
-
-        if user and user.role == User.Role.BUSINESS_ACCOUNTS:
-            login(request, user)
-            return redirect('investor-dashboard')
-        else:
-            error_message = "Invalid credentials or unauthorized role."
-            return render(request, 'authentication/customers-login/investor-login.html', {'error_message': error_message})
 
     return render(request, 'authentication/customers-login/investor-login.html')
 
 # ADMIN ACCOUNT LOGIN
 def admin_login_view(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
-
-        if user and user.role == User.Role.ADMIN:
-            login(request, user)
-            return redirect('admin-mainpage')
-        else:
-            error_message = "Invalid credentials or unauthorized role."
-            return render(request, 'authentication/admin/admin-login.html', {'error_message': error_message})
 
     return render(request, 'authentication/admin/admin-login.html')
 

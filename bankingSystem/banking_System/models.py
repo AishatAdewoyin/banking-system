@@ -29,7 +29,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser):
+class NewUser(AbstractBaseUser):
      #Custom user model extending AbstractUser
      email = models.EmailField(verbose_name="email address", max_length=60, unique=True)
      fullname = models.CharField(verbose_name="full name", max_length=255, unique=True)
@@ -39,18 +39,19 @@ class User(AbstractBaseUser):
      user_state = models.CharField(verbose_name="state", max_length=255, unique=True)
      user_zipcode = models.CharField(verbose_name="zipcode", max_length=10, unique=True)
      date_joined=models.DateTimeField(auto_now_add=True)
-     date_login=models.DateTimeField(auto_now_add=True)
+     last_login=models.DateTimeField(auto_now_add=True)
      is_admin=models.BooleanField(default=False)
      is_active=models.BooleanField(default=True)
-     is_personal=models.BooleanField(default=False)
-     is_personal=models.BooleanField(default=False)
-     is_investor=models.BooleanField(default=False)
+     is_staff = models.BooleanField(default=False)
+     is_personal=models.BooleanField(default=True)
+     is_business=models.BooleanField(default=True)
+     is_investor=models.BooleanField(default=True)
      is_superuser=models.BooleanField(default=False)
 
      USERNAME_FIELD="email"
      REQUIRED_FIELDS=["fullname"]
 
-     objects=UserManager()
+     objects = UserManager()
 
      def __str__(self):
          return self.fullname
