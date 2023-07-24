@@ -5,12 +5,12 @@ from django.contrib.auth.hashers import make_password
 from .models import NewUser
 from .forms import (
     AdminAccountRegistrationForm,
-    PersonalAccountRegistrationForm, 
-    BusinessAccountRegistrationForm, 
-    InvestorAccountRegistrationForm, 
-    AdminAccountLoginForm, 
-    PersonalAccountLoginForm, 
-    BusinessAccountLoginForm, 
+    PersonalAccountRegistrationForm,
+    BusinessAccountRegistrationForm,
+    InvestorAccountRegistrationForm,
+    AdminAccountLoginForm,
+    PersonalAccountLoginForm,
+    BusinessAccountLoginForm,
     InvestorsAccountLoginForm
 )
 
