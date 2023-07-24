@@ -32,9 +32,9 @@ class UserManager(BaseUserManager):
 class NewUser(AbstractBaseUser):
      #Custom user model extending AbstractUser
      email = models.EmailField(verbose_name="email address", max_length=60, unique=True)
-     fullname = models.CharField(verbose_name="full name", max_length=255, unique=True)
+     fullname = models.CharField(verbose_name="Your Name / Business Name / Investors Name", max_length=255, unique=True)
      user_address = models.CharField(verbose_name="address", max_length=255, unique=True)
-     user_address2 = models.CharField(max_length=255)
+     user_address2 = models.CharField(verbose_name="address 2", max_length=255)
      user_city = models.CharField(verbose_name="city", max_length=255, unique=True)
      user_state = models.CharField(verbose_name="state", max_length=255, unique=True)
      user_zipcode = models.CharField(verbose_name="zipcode", max_length=10, unique=True)
