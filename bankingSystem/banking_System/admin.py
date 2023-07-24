@@ -6,11 +6,8 @@ class NewUserAdmin(BaseUserAdmin):
     list_display = (
         'email',
         'fullname',
-        'user_address',
-        'user_address2',
         'user_city',
         'user_state',
-        'user_zipcode',
         'date_joined',
         'last_login',
         'is_admin',

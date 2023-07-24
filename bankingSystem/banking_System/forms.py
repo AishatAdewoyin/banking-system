@@ -12,6 +12,7 @@ class AdminAccountRegistrationForm(UserCreationForm):
 
 # Personal
 class PersonalAccountRegistrationForm(UserCreationForm):
+    # Form for Personal account registration
     class Meta:
         model = NewUser
         fields = ['email', 'fullname', 'user_address', 'user_address2', 'password1', 'password2','user_city', 'user_state', 'user_zipcode']
