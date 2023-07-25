@@ -33,18 +33,20 @@
             {% csrf_token %}
             <h2>Admin Registration!</h2>
             <div class="">
-                <div class="mb-3">
-                    <label for="admin-name" class="form-label">Full Name:</label>
-                    <input type="text" class="form-control" required id="admin-name" name="fullname" aria-describedby="fullName">
-                </div>
-                <div class="mb-3">
-                    <label for="admin-email" class="form-label">Email address:</label>
-                    <input type="email" class="form-control" required id="admin-email" name="email" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="admin-password" class="form-label">Password:</label>
-                    <input type="password" class="form-control" required  id="admin-password" name="password">
-                </div>
+                <span>{{ registration_form.email.label }}</span>
+                <p>{{ registration_form.email }}</p>
+                <span>{{ registration_form.fullname.label }}</span>
+                <p>{{ registration_form.fullname }}</p>
+                <span>{{ registration_form.password1.label }}</span>
+                <p>{{ registration_form.password1 }}</p>
+                <span>{{ registration_form.password2.label }}</span>
+                <p>{{ registration_form.password2 }}</p>
+
+
+                {% for error in registration_form.errors %}
+                <p style="color: red;">{{error}}</p>
+                {% endfor %}
+
                 <div id="p-accName" class="form-link mb-2">Already have an account<a href="{% url 'admin-login' %}" alt="go to admin login page">Login Here</a></div>
                 <button type="submit" class="btn btn-danger" alt="Register">Register</button>
             </div>

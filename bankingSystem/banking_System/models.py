@@ -4,9 +4,9 @@ from django.db import models
 class UserManager(BaseUserManager):
     def create_user(self, email, fullname, password=None):
         if not email:
-            raise ValueError("Email Required")
+            raise ValueError("Email is required")
         if not fullname:
-            raise ValueError("Full Name Required")
+            raise ValueError("Full Name is Required")
 
         user=self.model(
             email=self.normalize_email(email),
@@ -31,13 +31,13 @@ class UserManager(BaseUserManager):
 
 class NewUser(AbstractBaseUser):
      #Custom user model extending AbstractUser
-     email = models.EmailField(verbose_name="email address", max_length=60, unique=True)
-     fullname = models.CharField(verbose_name="full name", max_length=255, unique=True)
-     user_address = models.CharField(verbose_name="address", max_length=255, unique=True)
-     user_address2 = models.CharField(max_length=255)
-     user_city = models.CharField(verbose_name="city", max_length=255, unique=True)
-     user_state = models.CharField(verbose_name="state", max_length=255, unique=True)
-     user_zipcode = models.CharField(verbose_name="zipcode", max_length=10, unique=True)
+     email = models.EmailField(verbose_name="Email Address:", max_length=60, unique=True)
+     fullname = models.CharField(verbose_name="Your Name, Business Name or Investors Name:", max_length=255, unique=True)
+     user_address = models.CharField(verbose_name="address:", max_length=255, unique=True)
+     user_address2 = models.CharField(verbose_name="address 2:", max_length=255)
+     user_city = models.CharField(verbose_name="city:", max_length=255, unique=True)
+     user_state = models.CharField(verbose_name="state:", max_length=255, unique=True)
+     user_zipcode = models.CharField(verbose_name="zipcode:", max_length=10, unique=True)
      date_joined=models.DateTimeField(auto_now_add=True)
      last_login=models.DateTimeField(auto_now_add=True)
      is_admin=models.BooleanField(default=False)

@@ -26,23 +26,25 @@ def register_account(request, form_class, template_name, login_url):
     # Custom view based on user type
     if request.user.is_authenticated:
         if request.user.is_personal_user():
-            # Handle the request for a personal user.
-            return render(request, 'personal_dashboard.html')
+            # Handles the request for a personal user.
+            return render(request, 'authentication/customers-reg/personal-reg.html')
 
         elif request.user.is_business_user():
-            # Handle the request for a business user.
-            return render(request, 'business_dashboard.html')
+            # Handles the request for a business user.
+            return render(request, 'authentication/customers-reg/business-reg.html')
 
         elif request.user.is_investor_user():
-            # Handle the request for an investor.
-            return render(request, 'investor_dashboard.html')
+            # Handles the request for an investor.
+            return render(request, 'authentication/customers-reg/investor-reg.html')
 
-    # Continue with the registration logic
+    # Continuing with the registration logic
     if request.method == 'POST':
         form = form_class(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(login_url)  # Redirect to the login page after registration
+            return redirect(login_url)  # Redirects to the login page after registration
+        context['registration_form'] = form
+        
     else:
         form = form_class()
     context['registration_form'] = form
@@ -65,6 +67,7 @@ def personal_registration_view(request):
         'authentication/customers-reg/personal-reg.html',
         'personal-login'
     )
+
 
 # BUSINESS ACCOUNT REGISTRATION
 def business_registration_view(request):

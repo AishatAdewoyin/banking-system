@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
-from .models import NewUser
+from banking_system.models import NewUser
 
 # Admin
 class AdminAccountRegistrationForm(UserCreationForm):
@@ -17,12 +17,14 @@ class PersonalAccountRegistrationForm(UserCreationForm):
         model = NewUser
         fields = ['email', 'fullname', 'user_address', 'user_address2', 'password1', 'password2','user_city', 'user_state', 'user_zipcode']
 
+
 # Business
 class BusinessAccountRegistrationForm(UserCreationForm):
     # Form for Business account registration
     class Meta:
         model = NewUser
         fields = ['email', 'fullname', 'user_address', 'user_address2', 'password1', 'password2','user_city', 'user_state', 'user_zipcode']
+
 
 # Investor
 class InvestorAccountRegistrationForm(UserCreationForm):
@@ -33,7 +35,8 @@ class InvestorAccountRegistrationForm(UserCreationForm):
         fields = ['email', 'fullname', 'user_address', 'user_address2', 'password1', 'password2','user_city', 'user_state', 'user_zipcode']
 
 
-############## LOGINS ############
+
+############ LOGINS ###########
 
 class AdminAccountLoginForm(forms.ModelForm):
     password=forms.CharField(label='Password', widget=forms.PasswordInput)
