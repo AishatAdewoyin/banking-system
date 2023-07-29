@@ -1,0 +1,136 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonticons/css/all.css' %}" />
+
+    <!-- Google fonts APIs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+
+    <title>💵 Investor Account Dashboard</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-warning">
+            <div class="container">
+                <a class="navbar-brand fw-bolder text-success" href="{% url 'index' %}">💵TBNK</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" aria-current="page" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Create an Account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'personal-registration' %}">Create a Personal Account</a></li>
+                                <li><a class="dropdown-item" href="{% url 'business-registration' %}">Create a Business Account</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'investor-registration' %}">Become an Investor</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" aria-current="page" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Login to Your Account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'personal-login' %}">Personal Account</a></li>
+                                <li><a class="dropdown-item" href="{% url 'business-login' %}">Business Account</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'investor-login' %}">For Investors</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search for services"
+                            aria-label="Search">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container customer-details-section">
+        <h3 class="text-center">Transaction History</h3>
+        <table class="table bg-secondary table-striped">
+            <thead class="bg-warning">
+                <tr>
+                    <th>Date and Time</th>
+                    <th>Amount Invested</th>
+                    <th>Amount Credited</th>
+                    <th>Bank Name</th>
+                    <th>Account Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>July 1, 2023 10:30 AM</td>
+                    <td>$100.00</td>
+                    <td>$95.00</td>
+                    <td>John Doe</td>
+                    <td>$4,900.00</td>
+                </tr>
+                <tr>
+                    <td>June 28, 2023 3:45 PM</td>
+                    <td>$50.00</td>
+                    <td>$45.00</td>
+                    <td>John Doe</td>
+                    <td>$4,950.00</td>
+                </tr>
+                <!-- Add more rows for other transactions -->
+            </tbody>
+        </table>
+    </section>
+
+    <section class="container transfers-page mb-5 transfer-form-section">
+        <h3 class="text-center">Transfer Money</h3>
+        <form class="bg-secondary p-5">
+            <div class="mb-3">
+                <label for="sender" class="form-label">Sender:</label>
+                <select id="sender" class="form-select">
+                    <!-- Fetch and populate the select options dynamically with the list of customers -->
+                    <option value="1">John Doe</option>
+                    <!-- Repeat the above option structure for other customers -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="recipient" class="form-label">Recipient:</label>
+                <select id="recipient" class="form-select">
+                    <!-- Fetch and populate the select options dynamically with the list of customers -->
+                    <option value="1">John Doe</option>
+                    <!-- Repeat the above option structure for other customers -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount (NGN)</label>
+                <input type="number" id="amount" class="form-control" placeholder="Enter amount to transfer" min="500" step="any">
+              </div>
+              
+            <button type="submit" class="btn btn-warning">Transfer</button>
+        </form>
+    </section>
+    
+
+    <script src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'JS/register.js' %}"></script>
+</body>
+</html>
