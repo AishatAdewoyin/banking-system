@@ -44,7 +44,6 @@ def register_account(request, form_class, template_name, login_url):
             form.save()
             return redirect(login_url)  # Redirects to the login page after registration
         context['registration_form'] = form
-        
     else:
         form = form_class()
     context['registration_form'] = form
