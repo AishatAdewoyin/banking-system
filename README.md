@@ -1,9 +1,7 @@
 ### INTERNSHIP & MENTORSHIP (Mentor: Martha Kaburi) on: 
 
-
 ## Dynamic Banking Website
 A simple and dynamic website that allows users(bank system admins) to transfer money between multiple customers. This website is designed to handle up to 10 customers and record all transfer transactions in a database. There are login pages & user creation functionality included in this website.
-
 
 ### The Features
 Home Page: The landing page of the website.
