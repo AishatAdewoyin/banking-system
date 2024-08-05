@@ -28,5 +28,5 @@ Timestamp: The timestamp of the transfer.
 Making sure I populate the "Customers" table with dummy data for up to 10 customers.
 
 ### Hosting
-Using any of 000webhost, GitHub Pages, Heroku, or Netlify.
+Using any of Heroku, Vercel or Netlify.
 
